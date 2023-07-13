@@ -1,1 +1,1 @@
-# -skypro-music
+# skypro-music
