@@ -1,13 +1,11 @@
-import './App.css';
+import './App.css'
 
 function App() {
   return (
     <div className="App">
-        <p>
-        "Здесь скоро будет Skypro.Music"
-        </p>
+      <p>Здесь скоро будет Skypro Music</p>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
