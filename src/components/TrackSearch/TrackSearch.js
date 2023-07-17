@@ -1,0 +1,19 @@
+import './TrackSearch.css'
+
+function TrackSearch() {
+  return (
+    <div className="centerblock__search search">
+      <svg className="search__svg">
+        <use xlinkHref="/src/img/icon/sprite.svg#icon-search" />
+      </svg>
+      <input
+        className="search__text"
+        type="search"
+        placeholder="Поиск"
+        name="search"
+      />
+    </div>
+  )
+}
+
+export default TrackSearch
