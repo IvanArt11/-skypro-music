@@ -4,7 +4,7 @@ function TrackSearch() {
   return (
     <div className="centerblock__search search">
       <svg className="search__svg">
-        <use xlinkHref="/src/img/icon/sprite.svg#icon-search" />
+        <use xlinkHref="/img/icon/sprite.svg#icon-search" />
       </svg>
       <input
         className="search__text"

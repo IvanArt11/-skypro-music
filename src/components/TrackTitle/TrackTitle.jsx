@@ -8,7 +8,7 @@ function TrackTitle() {
       <div className="playlist-title__col col03">АЛЬБОМ</div>
       <div className="playlist-title__col col04">
         <svg className="playlist-title__svg" alt="time">
-          <use xlinkHref="/src/img/icon/sprite.svg#icon-watch" />
+          <use xlinkHref="/img/icon/sprite.svg#icon-watch" />
         </svg>
       </div>
     </div>

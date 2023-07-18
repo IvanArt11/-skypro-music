@@ -6,7 +6,7 @@ function AudioPlayerTrack() {
       <div className="track-play__contain">
         <div className="track-play__image">
           <svg className="track-play__svg" alt="music">
-            <use xlinkHref="/src/img/icon/sprite.svg#icon-note" />
+            <use xlinkHref="/img/icon/sprite.svg#icon-note" />
           </svg>
         </div>
         <div className="track-play__author">
@@ -24,12 +24,12 @@ function AudioPlayerTrack() {
       <div className="track-play__like-dis">
         <div className="track-play__like _btn-icon">
           <svg className="track-play__like-svg" alt="like">
-            <use xlinkHref="/src/img/icon/sprite.svg#icon-like" />
+            <use xlinkHref="/img/icon/sprite.svg#icon-like" />
           </svg>
         </div>
         <div className="track-play__dislike _btn-icon">
           <svg className="track-play__dislike-svg" alt="dislike">
-            <use xlinkHref="/src/img/icon/sprite.svg#icon-dislike" />
+            <use xlinkHref="/img/icon/sprite.svg#icon-dislike" />
           </svg>
         </div>
       </div>

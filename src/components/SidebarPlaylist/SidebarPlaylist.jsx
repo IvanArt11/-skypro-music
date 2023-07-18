@@ -8,7 +8,7 @@ function SidebarPlaylist() {
           <a className="sidebar__link" href="http://">
             <img
               className="sidebar__img"
-              src="/src/img/playlist01.png"
+              src="/img/playlist01.png"
               alt="day's playlist"
             />
           </a>
@@ -17,7 +17,7 @@ function SidebarPlaylist() {
           <a className="sidebar__link" href="http://">
             <img
               className="sidebar__img"
-              src="/src/img/playlist02.png"
+              src="/img/playlist02.png"
               alt="day's playlist"
             />
           </a>
@@ -26,7 +26,7 @@ function SidebarPlaylist() {
           <a className="sidebar__link" href="http://">
             <img
               className="sidebar__img"
-              src="/src/img/playlist03.png"
+              src="/img/playlist03.png"
               alt="day's playlist"
             />
           </a>

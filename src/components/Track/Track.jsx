@@ -101,7 +101,7 @@ function Track() {
               <div className="track__title">
                 <div className="track__title-image">
                   <svg className="track__title-svg" alt="{track.name}">
-                    <use xlinkHref="img/icon/sprite.svg#icon-note" />
+                    <use xlinkHref="/img/icon/sprite.svg#icon-note" />
                   </svg>
                 </div>
                 <div className="track__title-text">
@@ -123,7 +123,7 @@ function Track() {
               </div>
               <div className="track__time">
                 <svg className="track__time-svg" alt="time">
-                  <use xlinkHref="img/icon/sprite.svg#icon-like" />
+                  <use xlinkHref="/img/icon/sprite.svg#icon-like" />
                 </svg>
                 <span className="track__time-text">{track.time}</span>
               </div>

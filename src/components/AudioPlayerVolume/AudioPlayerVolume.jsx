@@ -6,7 +6,7 @@ function AudioPlayerVolume() {
       <div className="volume__content">
         <div className="volume__image">
           <svg className="volume__svg" alt="volume">
-            <use xlinkHref="/src/img/icon/sprite.svg#icon-volume" />
+            <use xlinkHref="/img/icon/sprite.svg#icon-volume" />
           </svg>
         </div>
         <div className="volume__progress _btn">
