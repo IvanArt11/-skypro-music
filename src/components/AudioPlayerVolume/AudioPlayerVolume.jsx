@@ -1,23 +1,20 @@
-import './AudioPlayerVolume.css'
+// import './AudioPlayerVolume.css'
+import * as S from './styles'
 
 function AudioPlayerVolume() {
   return (
-    <div className="bar__volume-block volume">
-      <div className="volume__content">
-        <div className="volume__image">
-          <svg className="volume__svg" alt="volume">
-            <use xlinkHref="/img/icon/sprite.svg#icon-volume" />
-          </svg>
-        </div>
-        <div className="volume__progress _btn">
-          <input
-            className="volume__progress-line _btn"
-            type="range"
-            name="range"
-          />
-        </div>
-      </div>
-    </div>
+    <S.BarVolumeBlock>
+      <S.VolumeContent>
+        <S.VolumeImage>
+          <S.VolumeSvg alt="volume">
+            <use xlinkHref="img/icon/sprite.svg#icon-volume" />
+          </S.VolumeSvg>
+        </S.VolumeImage>
+        <S.VolumeProgress className="_btn">
+          <S.VolumeProgressLine className="_btn" type="range" name="range" />
+        </S.VolumeProgress>
+      </S.VolumeContent>
+    </S.BarVolumeBlock>
   )
 }
 

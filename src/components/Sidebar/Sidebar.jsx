@@ -1,13 +1,14 @@
 import SidebarPersonal from '../SidebarPersonal/SidebarPersonal'
 import SidebarPlaylist from '../SidebarPlaylist/SidebarPlaylist'
-import './Sidebar.css'
+// import './Sidebar.css'
+import * as S from './styles'
 
 function Sidebar({ isLoading }) {
   return (
-    <div className="main__sidebar sidebar">
+    <S.MainSidebar>
       <SidebarPersonal />
       <SidebarPlaylist isLoading={isLoading} />
-    </div>
+    </S.MainSidebar>
   )
 }
 

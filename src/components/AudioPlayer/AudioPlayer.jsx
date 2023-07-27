@@ -1,22 +1,23 @@
 import AudioPlayerControls from '../AudioPlayerControls/AudioPlayerControls'
 import AudioPlayerTrack from '../AudioPlayerTrack/AudioPlayerTrack'
 import AudioPlayerVolume from '../AudioPlayerVolume/AudioPlayerVolume'
-import './AudioPlayer.css'
+// import './AudioPlayer.css'
+import * as S from './styles'
 
 function AudioPlayer({ isLoading }) {
   return (
-    <div className="bar">
-      <div className="bar__content">
-        <div className="bar__player-progress" />
-        <div className="bar__player-block">
-          <div className="bar__player player">
+    <S.Bar>
+      <S.BarContent>
+        <S.BarPlayerProgress />
+        <S.BarPlayerBlock>
+          <S.BarPlayer>
             <AudioPlayerControls />
             <AudioPlayerTrack isLoading={isLoading} />
-          </div>
+          </S.BarPlayer>
           <AudioPlayerVolume />
-        </div>
-      </div>
-    </div>
+        </S.BarPlayerBlock>
+      </S.BarContent>
+    </S.Bar>
   )
 }
 

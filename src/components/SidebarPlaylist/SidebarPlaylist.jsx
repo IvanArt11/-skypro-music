@@ -1,62 +1,48 @@
-import './SidebarPlaylist.css'
+// import './SidebarPlaylist.css'
+import * as S from './styles'
 
 function SidebarPlaylist({ isLoading }) {
   return (
-    <div className="sidebar__block">
-      <div className="sidebar__list">
-        <div className="sidebar__item">
-          <a className="sidebar__link" href="http://">
+    <S.SidebarBlock>
+      <S.SidebarList>
+        <S.SidebarItem>
+          <S.SidebarLink href="http://">
             {isLoading ? (
-              <img
-                className="sidebar__img"
+              <S.SidebarImg
                 src="img/Skeleton Sidebar.png"
                 alt="Skeleton Sidebar"
               />
             ) : (
-              <img
-                className="sidebar__img"
-                src="img/playlist01.png"
-                alt="day's playlist"
-              />
+              <S.SidebarImg src="img/playlist01.png" alt="day's playlist" />
             )}
-          </a>
-        </div>
-        <div className="sidebar__item">
-          <a className="sidebar__link" href="http://">
+          </S.SidebarLink>
+        </S.SidebarItem>
+        <S.SidebarItem>
+          <S.SidebarLink href="http://">
             {isLoading ? (
-              <img
-                className="sidebar__img"
+              <S.SidebarImg
                 src="img/Skeleton Sidebar.png"
                 alt="Skeleton Sidebar"
               />
             ) : (
-              <img
-                className="sidebar__img"
-                src="img/playlist02.png"
-                alt="day's playlist"
-              />
+              <S.SidebarImg src="img/playlist02.png" alt="day's playlist" />
             )}
-          </a>
-        </div>
-        <div className="sidebar__item">
-          <a className="sidebar__link" href="http://">
+          </S.SidebarLink>
+        </S.SidebarItem>
+        <S.SidebarItem>
+          <S.SidebarLink href="http://">
             {isLoading ? (
-              <img
-                className="sidebar__img"
+              <S.SidebarImg
                 src="img/Skeleton Sidebar.png"
                 alt="Skeleton Sidebar"
               />
             ) : (
-              <img
-                className="sidebar__img"
-                src="img/playlist03.png"
-                alt="day's playlist"
-              />
+              <S.SidebarImg src="img/playlist03.png" alt="day's playlist" />
             )}
-          </a>
-        </div>
-      </div>
-    </div>
+          </S.SidebarLink>
+        </S.SidebarItem>
+      </S.SidebarList>
+    </S.SidebarBlock>
   )
 }
 

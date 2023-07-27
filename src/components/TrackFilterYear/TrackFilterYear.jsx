@@ -1,10 +1,12 @@
+import * as S from "./styles";
+
 function TrackFilterYear() {
   return (
-    <ul className="filter__ul year">
-      <li className="filter__li">2000</li>
-      <li className="filter__li">2001</li>
-      <li className="filter__li">2002</li>
-    </ul>
+    <S.FilterUlYear>
+      <S.FilterLi>2000</S.FilterLi>
+      <S.FilterLi>2001</S.FilterLi>
+      <S.FilterLi>2002</S.FilterLi>
+    </S.FilterUlYear>
   )
 }
 

@@ -1,13 +1,15 @@
+import * as S from './styles'
+
 function TrackFilterGenre() {
   return (
-    <ul className="filter__ul genre">
-      <li className="filter__li">Техно</li>
-      <li className="filter__li">Хип-поп</li>
-      <li className="filter__li">Рэп</li>
-      <li className="filter__li">Рок</li>
-      <li className="filter__li">Инди</li>
-      <li className="filter__li">Поп-музыка</li>
-    </ul>
+    <S.FilterUlGenre>
+      <S.FilterLi>Техно</S.FilterLi>
+      <S.FilterLi>Хип-поп</S.FilterLi>
+      <S.FilterLi>Рэп</S.FilterLi>
+      <S.FilterLi>Рок</S.FilterLi>
+      <S.FilterLi>Инди</S.FilterLi>
+      <S.FilterLi>Поп-музыка</S.FilterLi>
+    </S.FilterUlGenre>
   )
 }
 

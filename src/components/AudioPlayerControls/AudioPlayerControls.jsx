@@ -1,34 +1,35 @@
-import './AudioPlayerControls.css'
+// import './AudioPlayerControls.css'
+import * as S from './styles'
 
 function AudioPlayerControls() {
   return (
-    <div className="player__controls">
-      <div className="player__btn-prev">
-        <svg className="player__btn-prev-svg" alt="prev">
-          <use xlinkHref="/img/icon/sprite.svg#icon-prev" />
-        </svg>
-      </div>
-      <div className="player__btn-play _btn">
-        <svg className="player__btn-play-svg" alt="play">
-          <use xlinkHref="/img/icon/sprite.svg#icon-play" />
-        </svg>
-      </div>
-      <div className="player__btn-next">
-        <svg className="player__btn-next-svg" alt="next">
-          <use xlinkHref="/img/icon/sprite.svg#icon-next" />
-        </svg>
-      </div>
-      <div className="player__btn-repeat _btn-icon">
-        <svg className="player__btn-repeat-svg" alt="repeat">
-          <use xlinkHref="/img/icon/sprite.svg#icon-repeat" />
-        </svg>
-      </div>
-      <div className="player__btn-shuffle _btn-icon">
-        <svg className="player__btn-shuffle-svg" alt="shuffle">
-          <use xlinkHref="/img/icon/sprite.svg#icon-shuffle" />
-        </svg>
-      </div>
-    </div>
+    <S.PlayerControls>
+      <S.PlayerBtnPrev className="_btn">
+        <S.PlayerBtnPrevSvg alt="prev">
+          <use xlinkHref="img/icon/sprite.svg#icon-prev" />
+        </S.PlayerBtnPrevSvg>
+      </S.PlayerBtnPrev>
+      <S.PlayerBtnPlay className="_btn">
+        <S.PlayerBtnPlaySvg alt="play">
+          <use xlinkHref="img/icon/sprite.svg#icon-play" />
+        </S.PlayerBtnPlaySvg>
+      </S.PlayerBtnPlay>
+      <S.PlayerBtnNext className="_btn">
+        <S.PlayerBtnNextSvg alt="next">
+          <use xlinkHref="img/icon/sprite.svg#icon-next" />
+        </S.PlayerBtnNextSvg>
+      </S.PlayerBtnNext>
+      <S.PlayerBtnRepeat className="_btn-icon">
+        <S.PlayerBtnRepeatSvg alt="repeat">
+          <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
+        </S.PlayerBtnRepeatSvg>
+      </S.PlayerBtnRepeat>
+      <S.PlayerBtnShuffle className="_btn-icon">
+        <S.PlayerBtnShuffleSvg alt="shuffle">
+          <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
+        </S.PlayerBtnShuffleSvg>
+      </S.PlayerBtnShuffle>
+    </S.PlayerControls>
   )
 }
 

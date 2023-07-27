@@ -1,8 +1,9 @@
-import './TrackFilter.css'
+// import './TrackFilter.css'
 import { useState } from 'react'
 import TrackFilterAuthor from '../TrackFilterAuthor/TrackFilterAuthor'
 import TrackFilterYear from '../TrackFilterYear/TrackFilterYear'
 import TrackFilterGenre from '../TrackFilterGenre/TrackFilterGenre'
+import * as S from './styles'
 
 // Optimized code
 const filterTypes = [
@@ -38,13 +39,13 @@ function TrackFilter() {
   }
 
   return (
-    <div className="centerblock__filter filter">
-      <div className="filter__title">Искать по:</div>
+    <S.CenterblockFilter>
+      <S.FilterTitle>Искать по:</S.FilterTitle>
 
       {filterTypes.map(
         ({ type, component: FilterComponent, label, buttonClass }) => (
           <div key={type}>
-            <div
+            <S.FilterButton
               onClick={() => switchFilter(type)}
               onKeyDown={(event) => {
                 if (event.key === 'Enter') {
@@ -60,14 +61,14 @@ function TrackFilter() {
               }
             >
               {label}
-            </div>
-            <div className="position-popup">
+            </S.FilterButton>
+            <S.PositionPopup>
               {filter === type && <FilterComponent />}
-            </div>
+            </S.PositionPopup>
           </div>
         ),
       )}
-    </div>
+    </S.CenterblockFilter>
   )
 }
 
@@ -75,81 +76,53 @@ export default TrackFilter
 
 // Old version
 // function TrackFilter() {
-// const [filter, setFilter] = useState('')
+//   const [filter, setFilter] = useState('')
 
-// function switchFilter(state) {
-//   if (state === filter) {
-//     setFilter(''); // Очистка фильтра, установив его на пустую строку
-//   } else {
-//     setFilter(state);
+//   function switchFilter(state) {
+//     if (state === filter) {
+//       setFilter()
+//     } else {
+//       setFilter(state)
+//     }
 //   }
+
+//   return (
+//     <S.CenterblockFilter>
+//       <S.FilterTitle>Искать по:</S.FilterTitle>
+//       <S.FilterButton
+//         className="_btn-text"
+//         onClick={() => switchFilter('author')}
+//         $active={filter === 'authors'}
+//       >
+//         исполнителю
+//       </S.FilterButton>
+//       <S.PositionPopup>
+//         {filter === 'author' && <TrackFilterAuthor />}
+//       </S.PositionPopup>
+
+//       <S.FilterButton
+//         className="_btn-text"
+//         onClick={() => switchFilter('year')}
+//         $active={filter === 'year'}
+//       >
+//         году выпуска
+//       </S.FilterButton>
+//       <S.PositionPopup>
+//         {filter === 'year' && <TrackFilterYear />}
+//       </S.PositionPopup>
+
+//       <S.FilterButton
+//         className="_btn-text"
+//         onClick={() => switchFilter('genre')}
+//         $active={filter === 'genre'}
+//       >
+//         жанру
+//       </S.FilterButton>
+//       <S.PositionPopup>
+//         {filter === 'genre' && <TrackFilterGenre />}
+//       </S.PositionPopup>
+//     </S.CenterblockFilter>
+//   )
 // }
 
-// return (
-//   <div className="centerblock__filter filter">
-//     <div className="filter__title">Искать по:</div>
-
-//     <div
-//       onClick={() => switchFilter('author')}
-//       onKeyDown={(event) => {
-//         if (event.key === 'Enter') {
-//           switchFilter('author');
-//         }
-//       }}
-//       role="button" // Указываем роль элемента (кнопки)
-//       tabIndex={0} // Делаем элемент фокусируемым для обработки клавиатурных событий
-//       className={
-//         filter === 'author'
-//           ? 'active-filter filter__button button-author'
-//           : 'filter__button button-author btn-text'
-//       }
-//     >
-//       исполнителю
-//     </div>
-//     <div className="position-popup">
-//       {filter === 'author' && <TrackFilterAuthor />}
-//     </div>
-
-//     <div
-//       onClick={() => switchFilter('year')}
-//       onKeyDown={(event) => {
-//         if (event.key === 'Enter') {
-//           switchFilter('year');
-//         }
-//       }}
-//       role="button" // Указываем роль элемента (кнопки)
-//       tabIndex={0} // Делаем элемент фокусируемым для обработки клавиатурных событий
-//       className={
-//         filter === 'year'
-//           ? 'active-filter filter__button button-year'
-//           : 'filter__button button-year btn-text'
-//       }
-//     >
-//       году выпуска
-//     </div>
-//     <div className="position-popup">
-//       {filter === 'year' && <TrackFilterYear />}
-//     </div>
-
-//     <div
-//       onClick={() => switchFilter('genre')}
-//       onKeyDown={(event) => {
-//         if (event.key === 'Enter') {
-//           switchFilter('genre');
-//         }
-//       }}
-//       role="button" // Указываем роль элемента (кнопки)
-//       tabIndex={0} // Делаем элемент фокусируемым для обработки клавиатурных событий
-//       className={
-//         filter === 'genre'
-//           ? 'active-filter filter__button button-genre'
-//           : 'filter__button button-genre btn-text'
-//       }
-//     >
-//       жанру
-//     </div>
-//     <div className="position-popup">
-//       {filter === 'genre' && <TrackFilterGenre />}
-//     </div>
-//   </div>
-// )
+// export default TrackFilter
