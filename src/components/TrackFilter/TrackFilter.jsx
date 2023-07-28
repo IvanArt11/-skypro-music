@@ -56,8 +56,8 @@ function TrackFilter() {
               tabIndex={0}
               className={
                 filter === type
-                  ? `active-filter filter__button ${buttonClass}`
-                  : `filter__button ${buttonClass} btn-text`
+                  ? `active-filter ${buttonClass}`
+                  : `${buttonClass} btn-text`
               }
             >
               {label}
