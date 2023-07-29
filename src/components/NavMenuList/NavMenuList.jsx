@@ -1,4 +1,3 @@
-// import './NavMenuList.css'
 import * as S from './styles'
 
 function NavMenuList() {

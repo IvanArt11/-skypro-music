@@ -1,4 +1,3 @@
-// import './SidebarPersonal.css'
 import * as S from './styles'
 
 function SidebarPersonal() {

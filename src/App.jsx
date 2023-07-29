@@ -1,10 +1,8 @@
-// import './App.css'
 import React from 'react'
 import NavMenu from './components/NavMenu/NavMenu'
 import TrackList from './components/TrackList/TrackList'
 import Sidebar from './components/Sidebar/Sidebar'
 import AudioPlayer from './components/AudioPlayer/AudioPlayer'
-import GlobalStyles from './GlobalStyles'
 import * as S from './stylesApp'
 
 function App() {
@@ -18,7 +16,7 @@ function App() {
 
   return (
     <S.Wrapper>
-      <GlobalStyles />
+      <S.GlobalStyles />
       <S.Container>
         <S.Main>
           <NavMenu />

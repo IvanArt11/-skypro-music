@@ -1,4 +1,3 @@
-// import './TrackTitle.css'
 import * as S from "./styles";
 
 function TrackTitle() {

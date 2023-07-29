@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import NavMenuList from '../NavMenuList/NavMenuList'
-// import './NavMenuBurger.css'
 import * as S from './styles'
 
 function NavMenuBurger() {

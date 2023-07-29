@@ -1,5 +1,4 @@
 import NavMenuBurger from '../NavMenuBurger/NavMenuBurger'
-// import './NavMenu.css'
 import * as S from './styles'
 
 function NavMenu() {

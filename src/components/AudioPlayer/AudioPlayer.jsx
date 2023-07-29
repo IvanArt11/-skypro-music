@@ -1,7 +1,6 @@
 import AudioPlayerControls from '../AudioPlayerControls/AudioPlayerControls'
 import AudioPlayerTrack from '../AudioPlayerTrack/AudioPlayerTrack'
 import AudioPlayerVolume from '../AudioPlayerVolume/AudioPlayerVolume'
-// import './AudioPlayer.css'
 import * as S from './styles'
 
 function AudioPlayer({ isLoading }) {

@@ -2,7 +2,6 @@ import TracksAll from '../TracksAll/TracksAll'
 import TrackFilter from '../TrackFilter/TrackFilter'
 import TrackSearch from '../TrackSearch/TrackSearch'
 import TrackTitle from '../TrackTitle/TrackTitle'
-// import './TrackList.css'
 import * as S from './styles'
 
 function TrackList({ isLoading }) {

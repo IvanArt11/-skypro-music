@@ -1,6 +1,5 @@
 import SidebarPersonal from '../SidebarPersonal/SidebarPersonal'
 import SidebarPlaylist from '../SidebarPlaylist/SidebarPlaylist'
-// import './Sidebar.css'
 import * as S from './styles'
 
 function Sidebar({ isLoading }) {

@@ -1,4 +1,3 @@
-// import './AudioPlayerControls.css'
 import * as S from './styles'
 
 function AudioPlayerControls() {

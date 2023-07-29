@@ -1,4 +1,3 @@
-// import './Track.css'
 import * as S from "./styles";
 
 function Track({ track, isLoading }) {

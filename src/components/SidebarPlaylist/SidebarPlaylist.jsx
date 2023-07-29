@@ -1,4 +1,3 @@
-// import './SidebarPlaylist.css'
 import * as S from './styles'
 
 function SidebarPlaylist({ isLoading }) {

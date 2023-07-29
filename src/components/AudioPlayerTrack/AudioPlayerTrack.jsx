@@ -1,4 +1,3 @@
-// import './AudioPlayerTrack.css'
 import * as S from './styles'
 
 function AudioPlayerTrack({ isLoading }) {
