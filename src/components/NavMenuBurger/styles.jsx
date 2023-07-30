@@ -1,24 +1,6 @@
-.main__nav {
-  width: 244px;
-  background-color: #181818;
-  padding: 20px 0 20px 36px;
-}
+import styled from 'styled-components'
 
-.nav__logo {
-  width: 113.33px;
-  height: 43px;
-  padding: 13px 0 13px 0;
-  background-color: transparent;
-  margin-bottom: 20px;
-}
-
-.logo__image {
-  width: 113.33px;
-  height: 17px;
-  color: #181818;
-}
-
-.nav__burger {
+export const NavBurger = styled.div`
   width: 20px;
   height: 36px;
   padding: 13px 0;
@@ -32,11 +14,12 @@
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-}
+  cursor: pointer;
+`
 
-.burger__line {
+export const BurgerLine = styled.span`
   display: inline-block;
   width: 100%;
   height: 1px;
   background-color: #d3d3d3;
-}
+`

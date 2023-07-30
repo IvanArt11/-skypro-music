@@ -1,3 +1,6 @@
+import { styled, createGlobalStyle } from 'styled-components'
+
+export const GlobalStyles = createGlobalStyle`
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +17,7 @@
 a,
 a:visited {
   text-decoration: none;
-  font-family: 'StratosSkyeng', sans-serif;
+  font-family: "StratosSkyeng", sans-serif;
   cursor: pointer;
 }
 
@@ -28,12 +31,10 @@ ul li {
 }
 
 @font-face {
-  font-family: 'StratosSkyeng';
-  src:
-    local('StratosSkyeng'),
-    local('StratosSkyeng'),
-    url('../public/fonts/StratosSkyeng.woff2') format('woff2'),
-    url('../public/fonts/StratosSkyeng.woff') format('woff');
+  font-family: "StratosSkyeng";
+  src: local("StratosSkyeng"), local("StratosSkyeng"),
+    url("../public/fonts/StratosSkyeng.woff2") format("woff2"),
+    url("../public/fonts/StratosSkyeng.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -42,26 +43,27 @@ html,
 body {
   width: 100%;
   height: 100%;
-  font-family: 'StratosSkyeng', sans-serif;
+  font-family: "StratosSkyeng", sans-serif;
   color: #ffffff;
 }
+`
 
-.wrapper {
+export const Wrapper = styled.div`
   width: 100%;
   min-height: 100%;
   overflow: hidden;
   background-color: #383838;
-}
+`
 
-.container {
+export const Container = styled.div`
   max-width: 1920px;
   height: 100vh;
   margin: 0 auto;
   position: relative;
   background-color: #181818;
-}
+`
 
-.main {
+export const Main = styled.main`
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
@@ -73,4 +75,6 @@ body {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-}
+`
+
+export const Footer = styled.footer``

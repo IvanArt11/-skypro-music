@@ -1,11 +1,11 @@
-import './SidebarPersonal.css'
+import * as S from './styles'
 
 function SidebarPersonal() {
   return (
-    <div className="sidebar__personal">
-      <p className="sidebar__personal-name">Ivan Art</p>
-      <div className="sidebar__avatar" />
-    </div>
+    <S.SidebarPersonal>
+      <S.SidebarPersonalName>Ivan Art</S.SidebarPersonalName>
+      <S.SidebarAvatar />
+    </S.SidebarPersonal>
   )
 }
 

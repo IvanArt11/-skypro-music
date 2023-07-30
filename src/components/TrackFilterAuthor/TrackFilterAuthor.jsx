@@ -1,18 +1,17 @@
 import { tracks } from '../TracksData/TracksData'
+import * as S from './styles'
 
 function TrackFilterAuthor() {
   return (
-    <ul className="filter__ul author">
+    <S.FilterUlAuthor>
       {tracks.length ? (
         tracks.map((track) => (
-          <li key={track.id} className="filter__li">
-            {track.author}
-          </li>
+          <S.FilterLi key={track.id}>{track.author}</S.FilterLi>
         ))
       ) : (
         <p>Треков нет</p>
       )}
-    </ul>
+    </S.FilterUlAuthor>
   )
 }
 

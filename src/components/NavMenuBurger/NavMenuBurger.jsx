@@ -1,33 +1,27 @@
 import { useState } from 'react'
 import NavMenuList from '../NavMenuList/NavMenuList'
-import './NavMenuBurger.css'
+import * as S from './styles'
 
 function NavMenuBurger() {
   const [openMenu, setOpenMenu] = useState(false)
 
-  function switchBurgerButton() {
-    setOpenMenu(!openMenu)
-  }
-
-  function handleKeyPress(event) {
-    if (event.key === 'Enter' || event.key === ' ') {
-      switchBurgerButton();
-    }
-  }
-
   return (
     <>
-      <div
-        className="nav__burger burger"
-        onClick={switchBurgerButton}
-        onKeyDown={handleKeyPress} // Добавляем обработчик события клавиатуры
-        role="button" // Указываем роль элемента (кнопки)
-        tabIndex={0} // Делаем элемент фокусируемым для обработки клавиатурных событий
+      <S.NavBurger
+      onClick={() => setOpenMenu(!openMenu)}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          setOpenMenu(!openMenu);
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label="Toggle Menu"
       >
-        <span className="burger__line" />
-        <span className="burger__line" />
-        <span className="burger__line" />
-      </div>
+        <S.BurgerLine />
+        <S.BurgerLine />
+        <S.BurgerLine />
+      </S.NavBurger>
       {openMenu && <NavMenuList />}
     </>
   )

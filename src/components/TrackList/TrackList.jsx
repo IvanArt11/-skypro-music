@@ -2,19 +2,19 @@ import TracksAll from '../TracksAll/TracksAll'
 import TrackFilter from '../TrackFilter/TrackFilter'
 import TrackSearch from '../TrackSearch/TrackSearch'
 import TrackTitle from '../TrackTitle/TrackTitle'
-import './TrackList.css'
+import * as S from './styles'
 
 function TrackList({ isLoading }) {
   return (
-    <div className="main__centerblock centerblock">
+    <S.MainCenterblock>
       <TrackSearch />
-      <h2 className="centerblock__h2">Треки</h2>
+      <S.CenterblockH2>Треки</S.CenterblockH2>
       <TrackFilter />
-      <div className="centerblock__content">
+      <S.CenterblockContent>
         <TrackTitle />
         <TracksAll isLoading={isLoading} />
-      </div>
-    </div>
+      </S.CenterblockContent>
+    </S.MainCenterblock>
   )
 }
 

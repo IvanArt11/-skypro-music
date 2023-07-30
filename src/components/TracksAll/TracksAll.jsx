@@ -1,18 +1,18 @@
 import { tracks } from '../TracksData/TracksData'
-import './TracksAll.css'
+import * as S from './styles'
 import Track from '../Track/Track'
 
 function TracksAll({ isLoading }) {
   return (
-    <div className="content__playlist playlist">
+    <S.ContentPlaylist>
       {tracks.length ? (
         tracks.map((track) => (
           <Track key={track.id} track={track} isLoading={isLoading} />
         ))
       ) : (
-        <p>Треков нету</p>
+        <p>Треков нет</p>
       )}
-    </div>
+    </S.ContentPlaylist>
   )
 }
 
