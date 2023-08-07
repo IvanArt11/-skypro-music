@@ -7,16 +7,20 @@
 import { AppRoutes } from './routes'
 
 function App() {
-//   const [isLoading, setIsLoading] = React.useState(true)
+  const user = localStorage.getItem('user')
+    ? localStorage.getItem('user')
+    : { isAllowed: false }
 
-//   React.useEffect(() => {
-//     setTimeout(() => {
-//       setIsLoading(false)
-//     }, 5000)
-//   }, [])
+  //   const [isLoading, setIsLoading] = React.useState(true)
+
+  //   React.useEffect(() => {
+  //     setTimeout(() => {
+  //       setIsLoading(false)
+  //     }, 5000)
+  //   }, [])
 
   return (
-    <AppRoutes />
+    <AppRoutes user={user} />
 
     // <S.Wrapper>
     //   <AppRoutes />

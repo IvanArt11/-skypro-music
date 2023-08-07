@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const NavMenu = styled.div`
   display: block;
@@ -19,4 +20,21 @@ export const MenuLink = styled.a`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+`
+
+export const StyledNavLink = styled(NavLink)`
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  &:hover {
+    border-color: #d9b6ff;
+    color: #d9b6ff;
+  }
+
+  &:active {
+    border-color: #ad61ff;
+    color: #ad61ff;
+  }
 `

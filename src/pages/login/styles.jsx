@@ -1,10 +1,12 @@
 import { styled } from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const Login = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgba(0, 0, 0, 0.85);
 `
 export const LoginWrap = styled.div`
   display: flex;
@@ -62,6 +64,7 @@ const LoginButton = `
 export const LoginLogin = styled.div`
   ${LoginButton}
   background-color: #580EA2;
+  color: #fff;
   margin-top: 40px;
   &:hover {
     opacity: 0.8;
@@ -74,5 +77,23 @@ export const LoginRegistration = styled.div`
   border: 1px solid #d0cece;
   &:hover {
     background-color: #ddd;
+  }
+`
+
+export const StyledNavLink = styled(NavLink)`
+  ${LoginButton}
+  color: #000;
+  border: 1px solid #d0cece;
+  &:hover {
+    background-color: #ddd;
+  }
+`
+export const StyledNavLinkLogin = styled(NavLink)`
+  ${LoginButton}
+  background-color: #580EA2;
+  color: #fff;
+  margin-top: 40px;
+  &:hover {
+    opacity: 0.8;
   }
 `

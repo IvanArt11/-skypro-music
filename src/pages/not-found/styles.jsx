@@ -1,4 +1,5 @@
 import { styled } from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const notFound = styled.div`
   height: 100vh;
@@ -6,6 +7,7 @@ export const notFound = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #181818;
 `
 export const notFoundCode = styled.h1`
   font-size: 160px;
@@ -43,6 +45,24 @@ export const notFoundDescription = styled.p`
 
 export const notFoundButton = styled.button`
   margin-top: 36px;
+  border-radius: 6px;
+  background-color: #580ea2;
+  border: 0;
+  padding: 12px 46px;
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.054px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+`
+
+export const StyledNavLink = styled(NavLink)`
+margin-top: 36px;
   border-radius: 6px;
   background-color: #580ea2;
   border: 0;
