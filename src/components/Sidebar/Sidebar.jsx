@@ -7,7 +7,7 @@ function Sidebar({ isLoading }) {
   return (
     <S.MainSidebar>
       <SidebarPersonal />
-      <SidebarPlaylist isLoading={isLoading} categorys={CATEGORIES} />
+      <SidebarPlaylist isLoading={isLoading} categories={CATEGORIES} />
     </S.MainSidebar>
   )
 }

@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import * as S from './styles'
 
-function SidebarPlaylist({ isLoading, categorys }) {
+function SidebarPlaylist({ isLoading, categories }) {
   return (
     <S.SidebarBlock>
       <S.SidebarList>
-        {categorys.map((category) => (
+        {categories.map((category) => (
           <S.SidebarItem key={category.id}>
             <Link to={`/category/${category.id}`}>
               <S.SidebarLink>
