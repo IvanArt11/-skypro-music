@@ -1,11 +1,15 @@
-import * as S from "./styles";
+import * as S from './styles'
 
-function TrackFilterYear() {
+function TrackFilterYear({ tracks }) {
   return (
     <S.FilterUlYear>
-      <S.FilterLi>2000</S.FilterLi>
-      <S.FilterLi>2001</S.FilterLi>
-      <S.FilterLi>2002</S.FilterLi>
+      {tracks.length ? (
+        tracks.map((track) => (
+          <S.FilterLi key={track.id}>{track.release_date}</S.FilterLi>
+        ))
+      ) : (
+        <p>Треков нет</p>
+      )}
     </S.FilterUlYear>
   )
 }

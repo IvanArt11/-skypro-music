@@ -26,7 +26,7 @@ const filterTypes = [
   },
 ]
 
-function TrackFilter() {
+function TrackFilter({ tracks }) {
   const [filter, setFilter] = useState('')
 
   function switchFilter(state) {
@@ -62,7 +62,7 @@ function TrackFilter() {
               {label}
             </S.FilterButton>
             <S.PositionPopup>
-              {filter === type && <FilterComponent />}
+              {filter === type && <FilterComponent tracks={tracks} />}
             </S.PositionPopup>
           </div>
         ),

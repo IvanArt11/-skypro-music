@@ -1,7 +1,7 @@
-import { tracks } from '../TracksData/TracksData'
+// import { tracks } from '../TracksData/TracksData'
 import * as S from './styles'
 
-function TrackFilterAuthor() {
+function TrackFilterAuthor({ tracks }) {
   return (
     <S.FilterUlAuthor>
       {tracks.length ? (

@@ -1,35 +1,29 @@
 import { Link } from 'react-router-dom'
 import * as S from './styles'
 
-function AudioPlayerTrack({ isLoading }) {
+function AudioPlayerTrack({ currentTrack }) {
   return (
     <S.PlayerTrackPlay>
       <S.TrackPlayContain>
-        {isLoading ? (
-          <img alt="Skeleton AudioPlayer" src="img/Skeleton AudioPlayer.png" />
-        ) : (
-          <>
-            <S.TrackPlayImage>
-              <S.TrackPlaySvg alt="music">
-                <use xlinkHref="img/icon/sprite.svg#icon-note" />
-              </S.TrackPlaySvg>
-            </S.TrackPlayImage>
-            <S.TrackPlayAuthor>
-              <Link to="/">
-                <S.TrackPlayAuthorLink href="http://">
-                  Ты та...
-                </S.TrackPlayAuthorLink>
-              </Link>
-            </S.TrackPlayAuthor>
-            <S.TrackPlayAlbum>
-              <Link to="/">
-                <S.TrackPlayAlbumLink href="http://">
-                  Баста
-                </S.TrackPlayAlbumLink>
-              </Link>
-            </S.TrackPlayAlbum>
-          </>
-        )}
+        <S.TrackPlayImage>
+          <S.TrackPlaySvg alt="music">
+            <use xlinkHref="img/icon/sprite.svg#icon-note" />
+          </S.TrackPlaySvg>
+        </S.TrackPlayImage>
+        <S.TrackPlayAuthor>
+          <Link to="/">
+            <S.TrackPlayAuthorLink href="http://">
+              {currentTrack.name}
+            </S.TrackPlayAuthorLink>
+          </Link>
+        </S.TrackPlayAuthor>
+        <S.TrackPlayAlbum>
+          <Link to="/">
+            <S.TrackPlayAlbumLink href="http://">
+              {currentTrack.author}
+            </S.TrackPlayAlbumLink>
+          </Link>
+        </S.TrackPlayAlbum>
       </S.TrackPlayContain>
 
       <S.TrackPlayLikeDislike>

@@ -1,6 +1,6 @@
 import * as S from './styles'
 
-function AudioPlayerVolume() {
+function AudioPlayerVolume({ setVisibleAudioPlayer }) {
   return (
     <S.BarVolumeBlock>
       <S.VolumeContent>
@@ -13,6 +13,12 @@ function AudioPlayerVolume() {
           <S.VolumeProgressLine className="_btn" type="range" name="range" />
         </S.VolumeProgress>
       </S.VolumeContent>
+      <S.ClosePlayer
+        onClick={() => setVisibleAudioPlayer(false)}
+        className="_btn"
+      >
+        ✖
+      </S.ClosePlayer>
     </S.BarVolumeBlock>
   )
 }
