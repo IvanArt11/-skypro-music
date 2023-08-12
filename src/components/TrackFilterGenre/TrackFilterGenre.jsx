@@ -1,14 +1,15 @@
 import * as S from './styles'
 
-function TrackFilterGenre() {
+function TrackFilterGenre({ tracks }) {
   return (
     <S.FilterUlGenre>
-      <S.FilterLi>Техно</S.FilterLi>
-      <S.FilterLi>Хип-поп</S.FilterLi>
-      <S.FilterLi>Рэп</S.FilterLi>
-      <S.FilterLi>Рок</S.FilterLi>
-      <S.FilterLi>Инди</S.FilterLi>
-      <S.FilterLi>Поп-музыка</S.FilterLi>
+      {tracks.length ? (
+        tracks.map((track) => (
+          <S.FilterLi key={track.id}>{track.genre}</S.FilterLi>
+        ))
+      ) : (
+        <p>Треков нет</p>
+      )}
     </S.FilterUlGenre>
   )
 }
