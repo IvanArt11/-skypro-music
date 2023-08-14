@@ -45,9 +45,9 @@ function AudioPlayer({ currentTrack, setVisibleAudioPlayer }) {
   }
 
   const changeCurrentTime = (e) => {
-    const newcurrentTime = Number(e.target.value)
-    audioRef.current.currentTime = currentTime
-    setCurrentTime(newcurrentTime)
+    const newСurrentTime = Number(e.target.value)
+    audioRef.current.currentTime = newСurrentTime
+    setCurrentTime(newСurrentTime)
   }
 
   const handleRepeat = () => {
