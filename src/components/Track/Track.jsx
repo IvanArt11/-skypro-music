@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom'
 import * as S from './styles'
+import { timer } from '../../utils/timer'
 
 function Track({ track, setCurrentTrack, setVisibleAudioPlayer }) {
-  const min = Math.floor(track.duration_in_seconds / 60)
-  const sec = track.duration_in_seconds - min * 60
   return (
     <S.PlaylistTrack
       onClick={() => {
@@ -40,9 +39,7 @@ function Track({ track, setCurrentTrack, setVisibleAudioPlayer }) {
         <S.TrackTimeSvg alt="time">
           <use xlinkHref="img/icon/sprite.svg#icon-like" />
         </S.TrackTimeSvg>
-        <S.TrackTimeText>
-          {min < 10 ? `0${min}` : min}:{sec < 10 ? `0${sec}` : sec}
-        </S.TrackTimeText>
+        <S.TrackTimeText>{timer(track.duration_in_seconds)}</S.TrackTimeText>
       </S.TrackTime>
     </S.PlaylistTrack>
   )
