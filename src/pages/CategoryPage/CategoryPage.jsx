@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { GlobalStyles } from '../main/styles'
+import { GlobalStyles } from '../../GlobalStyles'
 import NavMenu from '../../components/NavMenu/NavMenu'
 import TrackSearch from '../../components/TrackSearch/TrackSearch'
 import SidebarPersonal from '../../components/SidebarPersonal/SidebarPersonal'
@@ -7,10 +7,9 @@ import AudioPlayer from '../../components/AudioPlayer/AudioPlayer'
 import TrackTitle from '../../components/TrackTitle/TrackTitle'
 // import TracksAll from '../../components/TracksAll/TracksAll'
 import * as S from './styles'
-
 import { CATEGORIES } from '../../constants'
 
-export function Category({ isLoading }) {
+export function CategoryPage({ isLoading }) {
   const params = useParams()
 
   const selectedCategory = CATEGORIES.find(
@@ -40,4 +39,4 @@ export function Category({ isLoading }) {
   )
 }
 
-export default Category
+export default CategoryPage

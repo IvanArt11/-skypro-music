@@ -3,10 +3,10 @@ import NavMenu from '../../components/NavMenu/NavMenu'
 import TrackList from '../../components/TrackList/TrackList'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import AudioPlayer from '../../components/AudioPlayer/AudioPlayer'
-import * as S from './styles'
+import * as S from '../../stylesApp'
 import { getTracksAll } from '../../API'
 
-export function Main() {
+export function HomePage({ setUser }) {
   const [tracks, setTracks] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(true)
   const [visibleAudioPlayer, setVisibleAudioPlayer] = React.useState(false)
@@ -28,30 +28,26 @@ export function Main() {
   }, [])
 
   return (
-    <S.Wrapper>
-      <S.GlobalStyles />
-      <S.Container>
-        <S.Main>
-          <NavMenu />
-          <TrackList
-            isLoading={isLoading}
-            tracks={tracks}
-            setCurrentTrack={setCurrentTrack}
-            setVisibleAudioPlayer={setVisibleAudioPlayer}
-            getTracksError={getTracksError}
-          />
-          <Sidebar isLoading={isLoading} />
-        </S.Main>
-        {visibleAudioPlayer && (
-          <AudioPlayer
-            currentTrack={currentTrack}
-            setVisibleAudioPlayer={setVisibleAudioPlayer}
-          />
-        )}
-        <S.Footer />
-      </S.Container>
-    </S.Wrapper>
+    <S.Container>
+      <S.Main>
+        <NavMenu setUser={setUser} />
+        <TrackList
+          isLoading={isLoading}
+          tracks={tracks}
+          setCurrentTrack={setCurrentTrack}
+          setVisibleAudioPlayer={setVisibleAudioPlayer}
+          getTracksError={getTracksError}
+        />
+        <Sidebar isLoading={isLoading} setUser={setUser} />
+      </S.Main>
+      {visibleAudioPlayer && (
+        <AudioPlayer
+          currentTrack={currentTrack}
+          setVisibleAudioPlayer={setVisibleAudioPlayer}
+        />
+      )}
+      <S.Footer />
+    </S.Container>
   )
 }
-
-export default Main
+export default HomePage

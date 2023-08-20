@@ -1,10 +1,8 @@
 import * as S from './styles'
-import { GlobalStyles } from '../main/styles'
 
-export function NotFound() {
+export function NotFoundPage() {
   return (
     <S.notFound>
-      <GlobalStyles />
       <S.notFoundCode>404</S.notFoundCode>
       <S.notFoundTextWrap>
         <S.notFoundText>Страница не найдена</S.notFoundText>
@@ -23,4 +21,4 @@ export function NotFound() {
   )
 }
 
-export default NotFound
+export default NotFoundPage
