@@ -116,3 +116,18 @@ export const Error = styled.div`
   margin-top: 20px;
   text-align: left;
 `
+
+export const ShowPasswordIcon = styled.div`
+  position: absolute;
+  cursor: pointer;
+  font-size: 1.2rem;
+  right: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+`
+
+export const ModalInputContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`

@@ -9,7 +9,8 @@ import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute'
 import { useUserContext } from './hooks/useUserContext'
 
 export function AppRoutes({ setUser }) {
-  const user = useUserContext
+  // Вызов хука useUserContext
+  const user = useUserContext()
 
   return (
     <Routes>

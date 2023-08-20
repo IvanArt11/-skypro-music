@@ -32,7 +32,7 @@ export function RegisterPage({ setUser }) {
       navigate('/', { replace: true })
     } catch (error) {
       if (error.message) {
-        setErrorMessage(error.message);
+        setErrorMessage(error.message)
       }
     } finally {
       setDisabledButtonLogin(false)
@@ -42,6 +42,12 @@ export function RegisterPage({ setUser }) {
   const handleRegister = () => {
     if (!emailRef.current?.value) {
       setErrorMessage('Заполните почту')
+      return
+    }
+    // Проверка валидности email
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+    if (!emailPattern.test(emailRef.current.value)) {
+      setErrorMessage('Введите корректный email в формате valid@example.com')
       return
     }
     if (!passwordRef.current?.value) {
@@ -98,4 +104,3 @@ export function RegisterPage({ setUser }) {
 }
 
 export default RegisterPage
-

@@ -11,7 +11,7 @@ function App() {
   return (
     <S.Wrapper>
       <GlobalStyles />
-      <UserContext.Provider value={user}>
+      <UserContext.Provider value={(user, setUser)}>
         <AppRoutes setUser={setUser} />
       </UserContext.Provider>
     </S.Wrapper>
