@@ -1,3 +1,11 @@
+# Регистрация пользователя
+## Оценка времени работы
+5 часов
+
+## Реальное время работы
+13 часов
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
