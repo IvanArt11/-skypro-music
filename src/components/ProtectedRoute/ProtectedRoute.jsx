@@ -4,7 +4,7 @@ import { useUserContext } from '../../hooks/useUserContext'
 // Принимаем `redirectPath` в качестве пропса для перенаправления при отсутствии пользователя
 export function ProtectedRoute({ redirectPath }) {
   // Используем хук useUserContext для получения данных о пользователе
-  const user = useUserContext()
+  const {user} = useUserContext()
 
   // Если пользователь не авторизован, перенаправляем на указанный маршрут
   if (!user) {
