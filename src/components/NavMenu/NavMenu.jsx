@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import NavMenuBurger from '../NavMenuBurger/NavMenuBurger'
 import * as S from './styles'
+import { useUserContext } from '../../hooks/useUserContext'
 
-function NavMenu({ setUser }) {
+function NavMenu() {
+  const { user } = useUserContext()
   return (
     <S.MainNav>
       <S.NavLogo>
@@ -10,7 +12,7 @@ function NavMenu({ setUser }) {
           <S.LogoImage src="img/logo.png" alt="logo" />
         </Link>
       </S.NavLogo>
-      <NavMenuBurger setUser={setUser} />
+      <NavMenuBurger user={user} />
     </S.MainNav>
   )
 }

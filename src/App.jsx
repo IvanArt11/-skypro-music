@@ -8,11 +8,17 @@ import { UserContext } from './hooks/useUserContext'
 function App() {
   const [user, setUser] = React.useState(getLocalStorage())
 
+  // Обертывание значения контекста в useMemo для предотвращения ненужного повторного создания
+  const userContextValue = React.useMemo(
+    () => ({ user, setUser }),
+    [user, setUser],
+  )
+
   return (
     <S.Wrapper>
       <GlobalStyles />
-      <UserContext.Provider value={(user, setUser)}>
-        <AppRoutes setUser={setUser} />
+      <UserContext.Provider value={userContextValue}>
+        <AppRoutes />
       </UserContext.Provider>
     </S.Wrapper>
   )
