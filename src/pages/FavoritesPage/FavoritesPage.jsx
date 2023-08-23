@@ -1,4 +1,4 @@
-import { GlobalStyles } from '../main/styles'
+import { GlobalStyles } from '../../GlobalStyles'
 import * as S from './styles'
 import NavMenu from '../../components/NavMenu/NavMenu'
 import TrackSearch from '../../components/TrackSearch/TrackSearch'
@@ -7,7 +7,7 @@ import AudioPlayer from '../../components/AudioPlayer/AudioPlayer'
 import TrackTitle from '../../components/TrackTitle/TrackTitle'
 // import TracksAll from '../../components/TracksAll/TracksAll'
 
-export function Favorites({ isLoading }) {
+export function FavoritesPage({ isLoading }) {
   return (
     <S.myPlaylist>
       <GlobalStyles />
@@ -31,4 +31,4 @@ export function Favorites({ isLoading }) {
   )
 }
 
-export default Favorites
+export default FavoritesPage

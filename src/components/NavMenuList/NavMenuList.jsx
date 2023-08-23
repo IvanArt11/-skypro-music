@@ -1,8 +1,10 @@
 import * as S from './styles'
+import { removeLocalStorage } from '../../localStorage'
 
-function NavMenuList() {
-  const removeLocalStorage = () => {
-    localStorage.removeItem('user')
+function NavMenuList({ setUser }) {
+  const handleClickLogout = () => {
+    setUser(null);
+    removeLocalStorage();
   }
 
   return (
@@ -17,7 +19,7 @@ function NavMenuList() {
           {/* <S.MenuLink href="http://">Мой плейлист</S.MenuLink> */}
         </S.MenuItem>
         <S.MenuItem>
-          <S.StyledNavLink to="/login" onClick={removeLocalStorage}>
+          <S.StyledNavLink to="/Auth" onClick={handleClickLogout}>
             Выйти
           </S.StyledNavLink>
           {/* <S.MenuLink href="http://">Войти</S.MenuLink> */}

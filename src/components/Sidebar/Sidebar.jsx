@@ -3,10 +3,10 @@ import SidebarPlaylist from '../SidebarPlaylist/SidebarPlaylist'
 import * as S from './styles'
 import { CATEGORIES } from '../../constants'
 
-function Sidebar({ isLoading }) {
+function Sidebar({ isLoading}) {
   return (
     <S.MainSidebar>
-      <SidebarPersonal />
+      <SidebarPersonal/>
       <SidebarPlaylist isLoading={isLoading} categories={CATEGORIES} />
     </S.MainSidebar>
   )
