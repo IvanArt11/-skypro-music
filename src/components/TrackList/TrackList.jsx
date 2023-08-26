@@ -7,7 +7,6 @@ import * as S from './styles'
 function TrackList({
   isLoading,
   tracks,
-  setCurrentTrack,
   setVisibleAudioPlayer,
   getTracksError,
 }) {
@@ -21,7 +20,6 @@ function TrackList({
         <TracksAll
           isLoading={isLoading}
           tracks={tracks}
-          setCurrentTrack={setCurrentTrack}
           setVisibleAudioPlayer={setVisibleAudioPlayer}
           getTracksError={getTracksError}
         />

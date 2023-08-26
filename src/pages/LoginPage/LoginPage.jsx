@@ -69,7 +69,7 @@ export function LoginPage({ setUser }) {
   return (
     <S.PageContainer>
       <S.ModalForm>
-        <Link to="/login">
+        <Link to="/">
           <S.ModalLogo>
             <S.ModalLogoImage src="/img/logo-black.png" alt="logo" />
           </S.ModalLogo>
