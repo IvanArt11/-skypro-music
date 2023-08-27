@@ -10,7 +10,7 @@ import { useUserContext } from './hooks/useUserContext'
 
 export function AppRoutes({ setUser }) {
   // Вызов хука useUserContext
-  const user = useUserContext()
+  const { user } = useUserContext()
 
   return (
     <Routes>

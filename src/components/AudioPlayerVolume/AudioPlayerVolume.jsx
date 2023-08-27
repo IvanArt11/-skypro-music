@@ -1,7 +1,17 @@
 // import React from 'react'
+import { useDispatch } from 'react-redux'
 import * as S from './styles'
+import { setIsPlaying, setCurrentTrack } from '../../store/slices/playerSlice'
 
 function AudioPlayerVolume({ setVisibleAudioPlayer, setVolume, volume }) {
+  const dispatch = useDispatch()
+
+  const handleClosePlayer = () => {
+    setVisibleAudioPlayer(false)
+    dispatch(setCurrentTrack(null))
+    dispatch(setIsPlaying(false))
+  }
+
   return (
     <S.BarVolumeBlock>
       <S.VolumeContent>
@@ -30,10 +40,7 @@ function AudioPlayerVolume({ setVisibleAudioPlayer, setVolume, volume }) {
           />
         </S.VolumeProgress>
       </S.VolumeContent>
-      <S.ClosePlayer
-        onClick={() => setVisibleAudioPlayer(false)}
-        className="_btn"
-      >
+      <S.ClosePlayer onClick={handleClosePlayer} className="_btn">
         ⨯
       </S.ClosePlayer>
     </S.BarVolumeBlock>

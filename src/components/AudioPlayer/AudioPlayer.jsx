@@ -1,17 +1,29 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import AudioPlayerControls from '../AudioPlayerControls/AudioPlayerControls'
 import AudioPlayerTrack from '../AudioPlayerTrack/AudioPlayerTrack'
 import AudioPlayerVolume from '../AudioPlayerVolume/AudioPlayerVolume'
 import * as S from './styles'
 import { timer } from '../../utils/timer'
+import {
+  setIsPlaying,
+  setCurrentTrack,
+  setIsShuffle,
+} from '../../store/slices/playerSlice'
 
-function AudioPlayer({ currentTrack, setVisibleAudioPlayer }) {
-  const [isPlaying, setIsPlaying] = useState(true)
+function AudioPlayer({ setVisibleAudioPlayer }) {
   const [currentTime, setCurrentTime] = useState(0)
   const [volume, setVolume] = useState(50)
   const [isRepeat, setIsRepeat] = useState(false)
   const [duration, setDuration] = useState(0)
   const audioRef = useRef(null)
+
+  const dispatch = useDispatch()
+  const currentTrack = useSelector((state) => state.audioplayer.track)
+  const isPlaying = useSelector((state) => state.audioplayer.playing)
+  const currentPlaylist = useSelector((state) => state.audioplayer.playlist)
+  const isShuffle = useSelector((state) => state.audioplayer.shuffle)
+  const indexCurrentTrack = currentPlaylist.indexOf(currentTrack)
 
   useEffect(() => {
     if (audioRef.current) {
@@ -37,7 +49,7 @@ function AudioPlayer({ currentTrack, setVisibleAudioPlayer }) {
     } else {
       audio.play()
     }
-    setIsPlaying(!isPlaying)
+    dispatch(setIsPlaying(!isPlaying))
   }, [isPlaying])
 
   const handleTimeUpdate = useCallback(() => {
@@ -57,8 +69,45 @@ function AudioPlayer({ currentTrack, setVisibleAudioPlayer }) {
     setIsRepeat(!isRepeat)
   }, [isRepeat])
 
-  const handleActionNotImplemented = () => {
-    alert('В разработке')
+  const getRandomCurrentTrack = () => {
+    const indexRandomTrack = Math.floor(
+      Math.random() * (currentPlaylist.length - 1),
+    )
+    return currentPlaylist[indexRandomTrack]
+  }
+
+  const handlePrevTrack = () => {
+    if (indexCurrentTrack > 0) {
+      const prevTrack = currentPlaylist[indexCurrentTrack - 1]
+      dispatch(setCurrentTrack(prevTrack))
+      if (isShuffle) {
+        dispatch(setCurrentTrack(getRandomCurrentTrack()))
+      }
+    }
+    dispatch(setIsPlaying(true))
+  }
+
+  const handleNextTrack = () => {
+    if (indexCurrentTrack < currentPlaylist.length - 1) {
+      const nextTrack = currentPlaylist[indexCurrentTrack + 1]
+      dispatch(setCurrentTrack(nextTrack))
+      if (isShuffle) {
+        dispatch(setCurrentTrack(getRandomCurrentTrack()))
+      }
+    } else {
+      dispatch(setCurrentTrack(0))
+    }
+    dispatch(setIsPlaying(true))
+  }
+
+  const handleShuffle = () => {
+    dispatch(setIsShuffle(!isShuffle))
+  }
+
+  const trackEnding = () => {
+    const nextTrack = currentPlaylist[indexCurrentTrack + 1]
+    dispatch(setCurrentTrack(nextTrack))
+    dispatch(setIsPlaying(true))
   }
 
   const formattedCurrentTime = timer(currentTime)
@@ -74,6 +123,7 @@ function AudioPlayer({ currentTrack, setVisibleAudioPlayer }) {
         hidden
         preload="metadata"
         onTimeUpdate={handleTimeUpdate}
+        onEnded={trackEnding}
       >
         <track kind="captions" srcLang="en" label="captions" default />
       </audio>
@@ -99,8 +149,10 @@ function AudioPlayer({ currentTrack, setVisibleAudioPlayer }) {
               isPlaying={isPlaying}
               handleRepeat={handleRepeat}
               isRepeat={isRepeat}
-              handleNextPrev={handleActionNotImplemented}
-              handleShuffle={handleActionNotImplemented}
+              handlePrevTrack={handlePrevTrack}
+              handleNextTrack={handleNextTrack}
+              handleShuffle={handleShuffle}
+              isShuffle={isShuffle}
             />
             <AudioPlayerTrack currentTrack={currentTrack} />
           </S.BarPlayer>

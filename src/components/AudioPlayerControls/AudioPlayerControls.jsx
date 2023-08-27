@@ -5,29 +5,29 @@ function AudioPlayerControls({
   isPlaying,
   handleRepeat,
   isRepeat,
-  handleNextPrev,
+  handlePrevTrack,
+  handleNextTrack,
   handleShuffle,
+  isShuffle,
 }) {
   return (
     <S.PlayerControls>
       <S.PlayerBtnPrev className="_btn">
-        <S.PlayerBtnPrevSvg onClick={() => handleNextPrev()} alt="prev">
+        <S.PlayerBtnPrevSvg onClick={handlePrevTrack} alt="prev">
           <use xlinkHref="img/icon/sprite.svg#icon-prev" />
         </S.PlayerBtnPrevSvg>
       </S.PlayerBtnPrev>
       <S.PlayerBtnPlay onClick={handlePlayingAudio} className="_btn">
         <S.PlayerBtnPlaySvg alt="play">
           <use
-            xlinkHref={
-              isPlaying
-                ? 'img/icon/sprite.svg#icon-pause'
-                : 'img/icon/sprite.svg#icon-play'
-            }
+            xlinkHref={`img/icon/sprite.svg#icon-${
+              isPlaying ? 'pause' : 'play'
+            }`}
           />
         </S.PlayerBtnPlaySvg>
       </S.PlayerBtnPlay>
       <S.PlayerBtnNext className="_btn">
-        <S.PlayerBtnNextSvg onClick={() => handleNextPrev()} alt="next">
+        <S.PlayerBtnNextSvg onClick={handleNextTrack} alt="next">
           <use xlinkHref="img/icon/sprite.svg#icon-next" />
         </S.PlayerBtnNextSvg>
       </S.PlayerBtnNext>
@@ -39,8 +39,11 @@ function AudioPlayerControls({
           <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
         </S.PlayerBtnRepeatSvg>
       </S.PlayerBtnRepeat>
-      <S.PlayerBtnShuffle className="_btn-icon">
-        <S.PlayerBtnShuffleSvg onClick={() => handleShuffle()} alt="shuffle">
+      <S.PlayerBtnShuffle
+        onClick={handleShuffle}
+        className={isShuffle ? '_btn-icon-active' : '_btn-icon'}
+      >
+        <S.PlayerBtnShuffleSvg alt="shuffle">
           <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
         </S.PlayerBtnShuffleSvg>
       </S.PlayerBtnShuffle>

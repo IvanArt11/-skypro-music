@@ -1,20 +1,37 @@
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import * as S from './styles'
 import { timer } from '../../utils/timer'
+import { setCurrentTrack, setIsPlaying } from '../../store/slices/playerSlice'
 
-function Track({ track, setCurrentTrack, setVisibleAudioPlayer }) {
+function Track({ track, setVisibleAudioPlayer }) {
+  const dispatch = useDispatch()
+  const currentTrack = useSelector((state) => state.audioplayer.track)
+  const isPlaying = useSelector((state) => state.audioplayer.playing)
+
+  const currentID = currentTrack ? currentTrack.id : null
+
+  const onChangeTrack = () => {
+    if (currentTrack !== track) {
+      dispatch(setCurrentTrack(track))
+      dispatch(setIsPlaying(true))
+    } else {
+      dispatch(setIsPlaying(false))
+    }
+    setVisibleAudioPlayer(true)
+  }
+
   return (
-    <S.PlaylistTrack
-      onClick={() => {
-        setCurrentTrack(track)
-        setVisibleAudioPlayer(true)
-      }}
-    >
+    <S.PlaylistTrack onClick={onChangeTrack}>
       <S.TrackTitle>
         <S.TrackTitleImage>
-          <S.TrackTitleSvg alt="track">
-            <use xlinkHref="img/icon/sprite.svg#icon-note" />
-          </S.TrackTitleSvg>
+          {currentID === track.id ? (
+            <S.TrackTitleCurrent $isPlaying={isPlaying} />
+          ) : (
+            <S.TrackTitleSvg alt={track.name}>
+              <use xlinkHref="img/icon/sprite.svg#icon-note" />
+            </S.TrackTitleSvg>
+          )}
         </S.TrackTitleImage>
         <S.TrackTitleText>
           <Link to="/">

@@ -6,7 +6,6 @@ import { TrackSkeleton } from '../Track/TrackSkeleton'
 function TracksAll({
   isLoading,
   tracks,
-  setCurrentTrack,
   setVisibleAudioPlayer,
   getTracksError,
 }) {
@@ -26,7 +25,6 @@ function TracksAll({
             <Track
               key={track.id}
               track={track}
-              setCurrentTrack={setCurrentTrack}
               setVisibleAudioPlayer={setVisibleAudioPlayer}
             />
           ))}
