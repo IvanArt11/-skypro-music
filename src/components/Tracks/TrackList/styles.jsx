@@ -26,8 +26,3 @@ export const CenterblockContent = styled.div`
   -ms-flex-direction: column;
   flex-direction: column;
 `
-
-export const SidebarPersonalBlock = styled.div`
-  max-width: 418px;
-  padding: 20px 90px 20px 78px;
-`
