@@ -1,7 +1,10 @@
-// import React from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import * as S from './styles'
-import { setIsPlaying, setCurrentTrack } from '../../../redux/slices/playerSlice'
+import {
+  setIsPlaying,
+  setCurrentTrack,
+} from '../../../redux/slices/playerSlice'
 
 function AudioPlayerVolume({ setVisibleAudioPlayer, setVolume, volume }) {
   const dispatch = useDispatch()

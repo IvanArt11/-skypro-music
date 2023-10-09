@@ -1,4 +1,4 @@
-// import { tracks } from '../TracksData/TracksData'
+import React from 'react'
 import * as S from './styles'
 
 function TrackFilterAuthor({ tracks }) {

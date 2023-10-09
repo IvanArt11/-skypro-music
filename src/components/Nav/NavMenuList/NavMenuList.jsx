@@ -1,10 +1,11 @@
 import * as S from './styles'
 import { removeLocalStorage } from '../../localStorage'
+import React from 'react'
 
 function NavMenuList({ setUser }) {
   const handleClickLogout = () => {
-    setUser(null);
-    removeLocalStorage();
+    setUser(null)
+    removeLocalStorage()
   }
 
   return (

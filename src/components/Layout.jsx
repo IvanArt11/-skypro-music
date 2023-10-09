@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import NavMenu from './Nav/NavMenu/NavMenu'
 import AudioPlayer from './Player/AudioPlayer/AudioPlayer'
 import * as S from '../stylesApp'
+import React from 'react'
 
 export function Layout() {
   const visiblePlayer = useSelector((state) => state.audioplayer.visiblePlayer)
