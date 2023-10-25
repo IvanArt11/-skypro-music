@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link } from 'react-router-dom'
 import * as S from './styles'
 
@@ -8,7 +9,7 @@ export function NotFoundPage() {
         <S.Title>404</S.Title>
         <S.Block>
           <S.Text>Страница не найдена</S.Text>
-          <img src="/img/icon/smile_crying.png" alt="smile_crying" />
+          <img src="/img/smile_crying.png" alt="smile_crying" />
         </S.Block>
         <S.Subtext>
           Возможно, она была удалена или перенесена на другой адрес

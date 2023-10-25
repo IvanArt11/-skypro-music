@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
-import React from 'react'
 import * as S from './styles'
+import React from 'react'
 import { fetchRegister, getAccessToken } from '../../API'
 import { setLocalStorage } from '../../localStorage'
 import { UserContext } from '../../App'
 
-export function RegisterPage() {
+function RegisterPage() {
   const { setUser } = React.useContext(UserContext)
   const [errorMessage, setErrorMessage] = React.useState(null)
   const [disabledButtonLogin, setDisabledButtonLogin] = React.useState(false)
@@ -69,7 +69,7 @@ export function RegisterPage() {
       <S.ModalForm>
         <Link to="/">
           <S.ModalLogo>
-            <S.ModalLogoImage src="/ img / logo - black.png" alt="logo" />
+            <S.ModalLogoImage src="/img/logo_modal.png" alt="logo" />
           </S.ModalLogo>
         </Link>
         <>
@@ -101,4 +101,4 @@ export function RegisterPage() {
   )
 }
 
-export default RegisterPage
+export { RegisterPage }

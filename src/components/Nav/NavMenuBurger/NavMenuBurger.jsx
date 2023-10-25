@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import NavMenuList from '../NavMenuList/NavMenuList'
 import * as S from './styles'
 
-function NavMenuBurger({ setUser }) {
+function NavMenuBurger() {
   const [openMenu, setOpenMenu] = useState(false)
 
   return (
@@ -22,7 +22,7 @@ function NavMenuBurger({ setUser }) {
         <S.BurgerLine />
         <S.BurgerLine />
       </S.NavBurger>
-      {openMenu && <NavMenuList setUser={setUser} />}
+      {openMenu && <NavMenuList />}
     </>
   )
 }

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const CenterblockFilter = styled.div`
   display: -webkit-box;
@@ -12,7 +12,15 @@ export const CenterblockFilter = styled.div`
   -ms-flex-align: center;
   align-items: center;
   margin-bottom: 51px;
+  justify-content: space-between;
 `
+
+export const BlockFilter = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+
 export const FilterTitle = styled.div`
   font-style: normal;
   font-weight: 400;
@@ -29,26 +37,15 @@ export const FilterButton = styled.div`
   border: 1px solid #ffffff;
   border-radius: 60px;
   padding: 6px 20px;
-  cursor: pointer;
-
   &:not(:last-child) {
     margin-right: 10px;
   }
-
-  &:hover {
-    border-color: #d9b6ff;
-    color: #d9b6ff;
-  }
-
-  &:active {
-    border-color: #ad61ff;
-    color: #ad61ff;
-  }
-
-  &.active-filter {
+  ${(props) =>
+    props.$active &&
+    `
     color: #8c21fd;
-    border-color: #8c21fd;
-  }
+    border: 1px solid #8c21fd;
+    `}
 `
 
 export const PositionPopup = styled.div`

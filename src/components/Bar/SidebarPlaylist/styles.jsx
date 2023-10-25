@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const SidebarBlock = styled.div`
   height: 100%;
@@ -28,10 +28,11 @@ export const SidebarList = styled.div`
   align-items: center;
 `
 export const SidebarItem = styled.div`
-  width: 250px;
-  height: 150px;
   &:not(:last-child) {
     margin-bottom: 30px;
+  }
+  & span {
+    color: tomato;
   }
 `
 
@@ -43,4 +44,5 @@ export const SidebarLink = styled.div`
 export const SidebarImg = styled.img`
   width: 100%;
   height: auto;
+  padding-bottom: 30px;
 `

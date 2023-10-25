@@ -1,6 +1,8 @@
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './styles'
 import { setSearch } from '../../../redux/slices/filterSlice'
+
 
 function TrackSearch() {
   const dispatch = useDispatch()

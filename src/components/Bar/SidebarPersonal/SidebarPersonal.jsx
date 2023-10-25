@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 import * as S from './styles'
-import { removeLocalStorage } from '../../localStorage'
-import { useUserContext } from '../../hooks/useUserContext'
+import { removeLocalStorage } from '../../../localStorage'
+import { UserContext } from '../../../App'
 
 function SidebarPersonal() {
   // Используем хук useUserContext для получения данных о пользователе
-  const { user, setUser } = useUserContext()
+  const { user, setUser } = React.useContext(UserContext)
 
   const handleClickLogout = () => {
     setUser(null)

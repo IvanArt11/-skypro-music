@@ -1,3 +1,4 @@
+import React from 'react'
 import { useParams } from "react-router-dom";
 import { CATEGORIES } from "../../constants";
 import TrackTitle from "../../components/Tracks/TrackTitle/TrackTitle";

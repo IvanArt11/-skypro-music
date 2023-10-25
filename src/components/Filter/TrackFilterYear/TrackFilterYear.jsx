@@ -1,13 +1,35 @@
-import * as S from './styles'
 import React from 'react'
+import { useGetAllTracksQuery } from '../../../services/tracks'
+import * as S from './styles'
 
-function TrackFilterYear({ tracks }) {
+const TrackFilterYear = () => {
+  const { data, isLoading } = useGetAllTracksQuery()
+  const [filter, setFilter] = React.useState('По умолчанию')
+
+  function handleFilter(state) {
+    if (state === filter) {
+      setFilter()
+    } else {
+      setFilter(state)
+    }
+  }
+
   return (
     <S.FilterUlYear>
-      {tracks.length ? (
-        tracks.map((track) => (
-          <S.FilterLi key={track.id}>{track.release_date}</S.FilterLi>
-        ))
+      {isLoading ? (
+        <p>Загружаем ...</p>
+      ) : data ? (
+        <>
+          <S.FilterLi onClick={() => handleFilter('По умолчанию')}>
+            По умолчанию
+          </S.FilterLi>
+          <S.FilterLi onClick={() => handleFilter('Сначала старые')}>
+            Сначала старые
+          </S.FilterLi>
+          <S.FilterLi onClick={() => handleFilter('Сначала новые')}>
+            Сначала новые
+          </S.FilterLi>
+        </>
       ) : (
         <p>Треков нет</p>
       )}

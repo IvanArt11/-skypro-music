@@ -1,8 +1,11 @@
-import * as S from './styles'
-import { removeLocalStorage } from '../../localStorage'
 import React from 'react'
+import * as S from './styles'
+import { removeLocalStorage } from '../../../localStorage'
+import { UserContext } from '../../../App'
 
-function NavMenuList({ setUser }) {
+function NavMenuList() {
+  const { setUser } = React.useContext(UserContext)
+
   const handleClickLogout = () => {
     setUser(null)
     removeLocalStorage()

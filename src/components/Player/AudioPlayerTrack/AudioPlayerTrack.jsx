@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import * as S from './styles'
 import React from 'react'
+import * as S from './styles'
 
 function AudioPlayerTrack({ currentTrack }) {
   return (

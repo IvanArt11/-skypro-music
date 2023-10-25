@@ -1,3 +1,4 @@
+import React from 'react'
 import TrackTitle from '../../components/Tracks/TrackTitle/TrackTitle'
 import * as S from './styles'
 import TrackSearch from '../../components/Tracks/TrackSearch/TrackSearch'

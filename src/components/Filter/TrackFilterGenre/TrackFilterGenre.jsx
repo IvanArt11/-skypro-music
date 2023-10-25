@@ -1,11 +1,16 @@
-import * as S from './styles'
 import React from 'react'
+import * as S from './styles'
+import { useGetAllTracksQuery } from '../../../services/tracks'
 
-function TrackFilterGenre({ tracks }) {
+const TrackFilterGenre = () => {
+  const { data, isLoading } = useGetAllTracksQuery()
+
   return (
     <S.FilterUlGenre>
-      {tracks.length ? (
-        tracks.map((track) => (
+      {isLoading ? (
+        <p>Загружаем ...</p>
+      ) : data ? (
+        data.map((track) => (
           <S.FilterLi key={track.id}>{track.genre}</S.FilterLi>
         ))
       ) : (

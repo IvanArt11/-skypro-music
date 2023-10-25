@@ -1,11 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
+import React from 'react'
 import { HomePage } from './pages/HomePage/HomePage'
 import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage'
 import { CategoryPage } from './pages/CategoryPage/CategoryPage'
 import { LoginPage } from './pages/LoginPage/LoginPage'
 import { RegisterPage } from './pages/RegisterPage/RegisterPage'
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage'
-import { ProtectedRoute } from './components/ProtectedeRoute'
+import { ProtectedRoute } from './components/ProtectedRoute'
 import { Layout } from './components/Layout'
 
 export function AppRoutes() {
