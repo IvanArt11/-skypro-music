@@ -37,6 +37,7 @@ export const VolumeSvg = styled.svg`
   width: 13px;
   height: 18px;
   fill: transparent;
+  cursor: pointer;
 `
 
 export const VolumeProgress = styled.div`
@@ -72,7 +73,7 @@ export const VolumeProgress = styled.div`
   &::-webkit-slider-runnable-track {
     background: var(--progress-bg-color);
   }
-  /* FF */
+
   &::-moz-range-track {
     width: 100%;
     height: var(--progress-height);
@@ -97,11 +98,13 @@ export const VolumeProgressLine = styled.input`
   width: 109px;
 `
 
-export const ClosePlayer = styled.div`
+export const CloseSvg = styled.div`
+  width: 17px;
+  height: 17px;
   align-items: center;
-  padding-left: 80px;
-  font-size: 24px;
+  margin-left: 80px;
+  opacity: 0.8;
   &:hover {
-    text-shadow: #d9b6ff 0 0 20px;
+    opacity: 1;
   }
 `

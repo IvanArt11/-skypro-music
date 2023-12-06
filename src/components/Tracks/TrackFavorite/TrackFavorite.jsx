@@ -71,7 +71,7 @@ function TrackFavorite({ favTrack }) {
 
       fetchUpdateToken()
     }
-  }, [dispatch, errorDislike])
+  }, [dispatch, errorDislike, setUser])
 
   return (
     <S.PlaylistTrack>

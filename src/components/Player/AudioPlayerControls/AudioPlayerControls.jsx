@@ -1,7 +1,7 @@
 import React from 'react'
 import * as S from './styles'
 
-function AudioPlayerControls({
+const AudioPlayerControls = ({
   handlePlayingAudio,
   isPlaying,
   handleRepeat,
@@ -10,12 +10,12 @@ function AudioPlayerControls({
   handleNextTrack,
   handleShuffle,
   isShuffle,
-}) {
+}) => {
   return (
     <S.PlayerControls>
       <S.PlayerBtnPrev className="_btn">
         <S.PlayerBtnPrevSvg onClick={handlePrevTrack} alt="prev">
-          <use xlinkHref="img/icon/sprite.svg#icon-prev" />
+          <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
         </S.PlayerBtnPrevSvg>
       </S.PlayerBtnPrev>
       <S.PlayerBtnPlay onClick={handlePlayingAudio} className="_btn">
@@ -24,12 +24,12 @@ function AudioPlayerControls({
             xlinkHref={`img/icon/sprite.svg#icon-${
               isPlaying ? 'pause' : 'play'
             }`}
-          />
+          ></use>
         </S.PlayerBtnPlaySvg>
       </S.PlayerBtnPlay>
       <S.PlayerBtnNext className="_btn">
         <S.PlayerBtnNextSvg onClick={handleNextTrack} alt="next">
-          <use xlinkHref="img/icon/sprite.svg#icon-next" />
+          <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
         </S.PlayerBtnNextSvg>
       </S.PlayerBtnNext>
       <S.PlayerBtnRepeat
@@ -37,7 +37,7 @@ function AudioPlayerControls({
         className={isRepeat ? '_btn-icon-active' : '_btn-icon'}
       >
         <S.PlayerBtnRepeatSvg alt="repeat">
-          <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
+          <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
         </S.PlayerBtnRepeatSvg>
       </S.PlayerBtnRepeat>
       <S.PlayerBtnShuffle
@@ -45,7 +45,7 @@ function AudioPlayerControls({
         className={isShuffle ? '_btn-icon-active' : '_btn-icon'}
       >
         <S.PlayerBtnShuffleSvg alt="shuffle">
-          <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
+          <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
         </S.PlayerBtnShuffleSvg>
       </S.PlayerBtnShuffle>
     </S.PlayerControls>

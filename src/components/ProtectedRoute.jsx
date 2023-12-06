@@ -8,7 +8,7 @@ export function ProtectedRoute({ redirectPath }) {
   const { user } = React.useContext(UserContext)
   // Если пользователь не авторизован, перенаправляем на указанный маршрут
   if (!user) {
-    return <Navigate to={redirectPath} replace />
+    return <Navigate to={redirectPath} replace={true} />
   }
 
   // Если пользователь авторизован, отображаем маршруты, вложенные в компонент

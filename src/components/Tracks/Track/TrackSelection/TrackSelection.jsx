@@ -85,7 +85,7 @@ function TrackSelection({ track }) {
 
       fetchUpdateToken()
     }
-  }, [dispatch, errorDislike, errorLike])
+  }, [dispatch, errorDislike, errorLike, setUser])
 
   return (
     <S.PlaylistTrack>

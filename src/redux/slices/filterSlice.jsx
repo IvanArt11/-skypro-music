@@ -11,10 +11,18 @@ const filterSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
-    setSearch: (state, action) => ({ ...state, search: action.payload }),
-    setFilterAuthor: (state, action) => ({ ...state, author: action.payload }),
-    setFilterGenre: (state, action) => ({ ...state, genre: action.payload }),
-    setFilterYears: (state, action) => ({ ...state, years: action.payload }),
+    setSearch: (state, action) => {
+      state.search = action.payload
+    },
+    setFilterAuthor: (state, action) => {
+      state.author = action.payload
+    },
+    setFilterGenre: (state, action) => {
+      state.genre = action.payload
+    },
+    setFilterYears: (state, action) => {
+      state.years = action.payload
+    },
   },
 })
 

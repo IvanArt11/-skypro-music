@@ -12,31 +12,31 @@ const favoritesSlice = createSlice({
       const favoriteTrack = action.payload
       const isExists = state.playlist?.some((t) => t.id === favoriteTrack.id)
       if (!isExists) {
-        return {
-          ...state,
-          playlist: [...state.playlist, favoriteTrack],
+        if (state.playlist) {
+          state.playlist.push(favoriteTrack)
         }
       }
-      return state
     },
     deleteFromFavoritesPlaylist: (state, action) => {
       const favoriteTrack = action.payload
-      const updatedPlaylist = state.playlist?.filter(
-        (t) => t.id !== favoriteTrack.id,
-      )
-      return {
-        ...state,
-        playlist: updatedPlaylist,
+      const isExists = state.playlist?.some((t) => t.id === favoriteTrack.id)
+      if (isExists) {
+        const index = state.playlist?.findIndex(
+          (item) => item.id === favoriteTrack.id,
+        )
+        if (index !== -1) {
+          if (state.playlist) {
+            state.playlist.splice(index, 1)
+          }
+        }
       }
     },
-    setFavoritesPlaylist: (state, action) => ({
-      ...state,
-      playlist: action.payload,
-    }),
-    setSelectionPlaylist: (state, action) => ({
-      ...state,
-      playlist: action.payload,
-    }),
+    setFavoritesPlaylist: (state, action) => {
+      state.playlist = action.payload
+    },
+    setSelectionPlaylist: (state, action) => {
+      state.playlist = action.payload
+    },
   },
 })
 

@@ -4,23 +4,23 @@ import * as S from './styles'
 import {
   setIsPlaying,
   setCurrentTrack,
+  setVisiblePlayer,
 } from '../../../redux/slices/playerSlice'
 
-function AudioPlayerVolume({ setVisibleAudioPlayer, setVolume, volume }) {
+const AudioPlayerVolume = ({ setVolume, volume }) => {
   const dispatch = useDispatch()
 
   const handleClosePlayer = () => {
-    setVisibleAudioPlayer(false)
+    dispatch(setVisiblePlayer(false))
     dispatch(setCurrentTrack(null))
     dispatch(setIsPlaying(false))
   }
-
   return (
     <S.BarVolumeBlock>
       <S.VolumeContent>
         <S.VolumeImage>
           <S.VolumeSvg
-            onClick={() => setVolume((value) => (value > 0 ? 0 : 100))}
+            onClick={() => setVolume((value) => (value > 0 ? 0 : 50))}
             alt="volume"
           >
             <use
@@ -29,7 +29,7 @@ function AudioPlayerVolume({ setVisibleAudioPlayer, setVolume, volume }) {
                   ? 'img/icon/sprite.svg#icon-sound-off'
                   : 'img/icon/sprite.svg#icon-sound-on'
               }
-            />
+            ></use>
           </S.VolumeSvg>
         </S.VolumeImage>
         <S.VolumeProgress className="_btn">
@@ -40,12 +40,13 @@ function AudioPlayerVolume({ setVisibleAudioPlayer, setVolume, volume }) {
             value={volume}
             $color="#D9D9D9"
             onChange={(e) => setVolume(e.target.value)}
-          />
+          ></S.VolumeProgressLine>
         </S.VolumeProgress>
       </S.VolumeContent>
-      <S.ClosePlayer onClick={handleClosePlayer} className="_btn">
+      <S.CloseSvg onClick={handleClosePlayer} className="_btn">
         ⨯
-      </S.ClosePlayer>
+        {/* <use xlinkHref="img/icon/sprite.svg#icon-close"></use> */}
+      </S.CloseSvg>
     </S.BarVolumeBlock>
   )
 }

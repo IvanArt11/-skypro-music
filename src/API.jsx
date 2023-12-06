@@ -1,11 +1,11 @@
 const URL_USER = 'https://skypro-music-api.skyeng.tech/user'
 
-export const fetchRegister = async (email, password) =>
-  fetch(`${URL_USER}/signup/`, {
+export const fetchRegister = async (email, password) => {
+  return fetch(URL_USER + '/signup/', {
     method: 'POST',
     body: JSON.stringify({
-      email,
-      password,
+      email: email,
+      password: password,
       username: email,
     }),
     headers: {
@@ -16,17 +16,18 @@ export const fetchRegister = async (email, password) =>
       return response.json()
     }
     if (response.status === 401) {
-      throw new Error('Такой аккаунт уже существует')
+      throw new Error('Ошибка сервера')
     }
-    throw new Error('Ошибка сервера')
+    throw new Error('Такой аккаунт уже существует')
   })
+}
 
-export const fetchLogin = async (email, password) =>
-  fetch(`${URL_USER}/login/`, {
+export const fetchLogin = async (email, password) => {
+  return fetch(URL_USER + '/login/', {
     method: 'POST',
     body: JSON.stringify({
-      email,
-      password,
+      email: email,
+      password: password,
     }),
     headers: {
       'content-type': 'application/json',
@@ -40,13 +41,14 @@ export const fetchLogin = async (email, password) =>
     }
     throw new Error('Ошибка сервера')
   })
+}
 
-export const getAccessToken = async (email, password) =>
-  fetch(`${URL_USER}/token/`, {
+export const getAccessToken = async (email, password) => {
+  return fetch(URL_USER + '/token/', {
     method: 'POST',
     body: JSON.stringify({
-      email,
-      password,
+      email: email,
+      password: password,
     }),
     headers: {
       'content-type': 'application/json',
@@ -57,9 +59,10 @@ export const getAccessToken = async (email, password) =>
     }
     throw new Error('Ошибка сервера')
   })
+}
 
-export const updateToken = async (token) =>
-  fetch(`${URL_USER}/token/refresh/`, {
+export const updateToken = async (token) => {
+  return fetch(URL_USER + '/token/refresh/', {
     method: 'POST',
     body: JSON.stringify({
       refresh: token,
@@ -78,3 +81,4 @@ export const updateToken = async (token) =>
     .catch(() => {
       throw new Error('проблема')
     })
+}

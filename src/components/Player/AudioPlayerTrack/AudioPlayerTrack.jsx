@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 import * as S from './styles'
+import { handleClickLike } from '../../../utils/trackUtils'
 
-function AudioPlayerTrack({ currentTrack }) {
+function AudioPlayerTrack({ currentTrack, addToFavorites, dispatch }) {
   return (
     <S.PlayerTrackPlay>
       <S.TrackPlayContain>
         <S.TrackPlayImage>
           <S.TrackPlaySvg alt="music">
-            <use xlinkHref="img/icon/sprite.svg#icon-note" />
+            <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
           </S.TrackPlaySvg>
         </S.TrackPlayImage>
         <S.TrackPlayAuthor>
@@ -28,16 +29,21 @@ function AudioPlayerTrack({ currentTrack }) {
       </S.TrackPlayContain>
 
       <S.TrackPlayLikeDislike>
-        <S.TrackPlayLike className="_btn-icon">
-          <S.TrackPlayLikeSvg alt="like">
-            <use xlinkHref="img/icon/sprite.svg#icon-like" />
+        <S.TrackPlayLike>
+          <S.TrackPlayLikeSvg
+            onClick={() =>
+              handleClickLike(
+                currentTrack.id,
+                addToFavorites,
+                dispatch,
+                currentTrack,
+              )
+            }
+            alt="like"
+          >
+            <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
           </S.TrackPlayLikeSvg>
         </S.TrackPlayLike>
-        <S.TrackPlayDislike className="_btn-icon">
-          <S.TrackPlayDislikeSvg alt="dislike">
-            <use xlinkHref="img/icon/sprite.svg#icon-dislike" />
-          </S.TrackPlayDislikeSvg>
-        </S.TrackPlayDislike>
       </S.TrackPlayLikeDislike>
     </S.PlayerTrackPlay>
   )

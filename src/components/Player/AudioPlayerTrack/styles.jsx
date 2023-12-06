@@ -90,6 +90,7 @@ export const TrackPlayLikeDislike = styled.div`
   -ms-flex-align: center;
   align-items: center;
   margin-left: 26%;
+  cursor: pointer;
 `
 
 export const TrackPlayLike = styled.div`
@@ -99,23 +100,6 @@ export const TrackPlayLike = styled.div`
 export const TrackPlayLikeSvg = styled.svg`
   width: 14px;
   height: 12px;
-  fill: transparent;
-  stroke: #696969;
-  &:active {
-    fill: #696969;
-    stroke: #ffffff;
-    cursor: pointer;
-  }
-`
-
-export const TrackPlayDislike = styled.div`
-  padding: 5px;
-  margin-left: 28.5px;
-`
-
-export const TrackPlayDislikeSvg = styled.svg`
-  width: 14.34px;
-  height: 13px;
   fill: transparent;
   stroke: #696969;
   &:active {

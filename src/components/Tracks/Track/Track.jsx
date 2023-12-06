@@ -8,10 +8,7 @@ import {
   setIsPlaying,
   setVisiblePlayer,
 } from '../../../redux/slices/playerSlice'
-import {
-  addToFavoritesPlaylist,
-  deleteFromFavoritesPlaylist,
-} from '../../../redux/slices/favoritesSlice'
+import { deleteFromFavoritesPlaylist } from '../../../redux/slices/favoritesSlice'
 import {
   useAddToFavoritesMutation,
   useDeleteFromFavoritesMutation,
@@ -24,6 +21,7 @@ import {
 } from '../../../localStorage'
 import { updateToken } from '../../../API'
 import { UserContext } from '../../../App'
+import { handleClickLike } from '../../../utils/trackUtils'
 
 function Track({ track }) {
   const dispatch = useDispatch()
@@ -49,10 +47,10 @@ function Track({ track }) {
 
   const isLike = track.stared_user.some((users) => users.id === user.id)
 
-  const handleClickLike = (id) => {
-    addToFavorites(id)
-    dispatch(addToFavoritesPlaylist(track))
+  const handleClickLikeTrack = (id) => {
+    handleClickLike(id, addToFavorites, dispatch, track)
   }
+
   const handleClickDislike = (id) => {
     deleteFromFavorites(id)
     dispatch(deleteFromFavoritesPlaylist(track))
@@ -85,7 +83,7 @@ function Track({ track }) {
 
       fetchUpdateToken()
     }
-  }, [dispatch, errorDislike, errorLike])
+  }, [dispatch, errorDislike, errorLike, setUser])
 
   return (
     <S.PlaylistTrack>
@@ -129,8 +127,8 @@ function Track({ track }) {
           </S.TrackLike>
         ) : (
           <S.TrackLike
-            onClick={() => handleClickLike(track.id)}
-            className="_btn-icon"
+            onClick={() => handleClickLikeTrack(track.id)}
+            className={isLike ? '_btn-icon-like' : '_btn-icon'}
           >
             <S.TrackLikeSvg alt="time">
               <use xlinkHref="img/icon/sprite.svg#icon-like" />

@@ -14,35 +14,20 @@ const playerSlice = createSlice({
   initialState,
   reducers: {
     setCurrentTrack(state, action) {
-      return {
-        ...state,
-        track: action.payload,
-        playing: false,
-      }
+      state.track = action.payload
+      state.playing = false
     },
     setIsPlaying(state) {
-      return {
-        ...state,
-        playing: !state.playing,
-      }
+      state.playing = !state.playing
     },
     setPlaylist(state, action) {
-      return {
-        ...state,
-        playlist: action.payload,
-      }
+      state.playlist = action.payload
     },
     setIsShuffle(state) {
-      return {
-        ...state,
-        shuffle: !state.shuffle,
-      }
+      state.shuffle = !state.shuffle
     },
     setVisiblePlayer(state) {
-      return {
-        ...state,
-        visiblePlayer: !state.visiblePlayer,
-      }
+      state.visiblePlayer = !state.visiblePlayer
     },
   },
 })
