@@ -1,15 +1,16 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import * as S from './styles'
+import * as S from '../RegisterPage/styles'
 import { setLocalStorage } from '../../localStorage'
-import { fetchLogin } from '../../API'
+import { fetchLogin, getAccessToken } from '../../API'
+import { UserContext } from '../../App'
 
-export function LoginPage({ setUser }) {
+export function LoginPage() {
+  const { setUser } = React.useContext(UserContext)
   const emailRef = React.useRef(null)
   const passwordRef = React.useRef(null)
-  const [errorMessage, setErrorMessage] = React.useState('')
+  const [errorMessage, setErrorMessage] = React.useState(null)
   const [disabledButtonLogin, setDisabledButtonLogin] = React.useState(false)
-  const [showPassword, setShowPassword] = React.useState(false)
 
   const navigate = useNavigate()
 
@@ -25,7 +26,9 @@ export function LoginPage({ setUser }) {
       }
 
       const userData = await fetchLogin(email, password)
+      const accessToken = await getAccessToken(email, password)
 
+      userData.accessToken = accessToken
       setUser(userData)
       setLocalStorage(userData)
       setErrorMessage(null)
@@ -39,31 +42,17 @@ export function LoginPage({ setUser }) {
     }
   }
 
-  const validateInputs = () => {
+  const handleLogin = () => {
     if (!emailRef.current?.value) {
       setErrorMessage('Заполните почту')
-      return false
-    }
-    // Проверка валидности email
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-    if (!emailPattern.test(emailRef.current.value)) {
-      setErrorMessage('Введите корректный email в формате valid@example.com')
-      return false
+      return
     }
     if (!passwordRef.current?.value) {
       setErrorMessage('Введите пароль')
-      return false
+      return
     }
-    return true
-  }
 
-  const handleLoginButtonClick = () => {
-    if (!validateInputs()) return
     validateAndLogin()
-  }
-
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword)
   }
 
   return (
@@ -77,25 +66,17 @@ export function LoginPage({ setUser }) {
         <>
           <S.Inputs>
             <S.ModalInput ref={emailRef} type="text" placeholder="Почта" />
-            <S.ModalInputContainer>
-              <S.ModalInput
-                ref={passwordRef}
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Пароль"
-              />
-              <S.ShowPasswordIcon
-                onClick={toggleShowPassword}
-                showPassword={showPassword}
-              >
-                {showPassword ? '👁️' : '👁️'}
-              </S.ShowPasswordIcon>
-            </S.ModalInputContainer>
+            <S.ModalInput
+              ref={passwordRef}
+              type="password"
+              placeholder="Пароль"
+            />
           </S.Inputs>
           {errorMessage && <S.Error>{errorMessage}</S.Error>}
           <S.Buttons>
             <S.PrimaryButton
               disabled={disabledButtonLogin}
-              onClick={handleLoginButtonClick}
+              onClick={handleLogin}
             >
               Войти
             </S.PrimaryButton>

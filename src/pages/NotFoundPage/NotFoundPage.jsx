@@ -1,23 +1,24 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
 import * as S from './styles'
 
 export function NotFoundPage() {
   return (
-    <S.notFound>
-      <S.notFoundCode>404</S.notFoundCode>
-      <S.notFoundTextWrap>
-        <S.notFoundText>Страница не найдена</S.notFoundText>
-        <S.notFoundImg
-          src="/img/icon/smile_crying.png"
-          alt="грустный смайлик"
-        />
-      </S.notFoundTextWrap>
-      <S.notFoundDescription>
-        Возможно, она была удалена или перенесена на другой адрес
-      </S.notFoundDescription>
-
-      <S.StyledNavLink to="/">Вернуться на главную</S.StyledNavLink>
-      {/* <S.notFoundButton>Вернуться на главную</S.notFoundButton> */}
-    </S.notFound>
+    <S.PageContainer>
+      <S.ModalForm>
+        <S.Title>404</S.Title>
+        <S.Block>
+          <S.Text>Страница не найдена</S.Text>
+          <img src="/img/smile_crying.png" alt="smile_crying" />
+        </S.Block>
+        <S.Subtext>
+          Возможно, она была удалена или перенесена на другой адрес
+        </S.Subtext>
+        <Link to="/">
+          <S.PrimaryButton>Вернуться на главную</S.PrimaryButton>
+        </Link>
+      </S.ModalForm>
+    </S.PageContainer>
   )
 }
 

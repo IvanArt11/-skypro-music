@@ -1,23 +1,22 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import * as S from './stylesApp'
 import { GlobalStyles } from './GlobalStyles'
 import { AppRoutes } from './routes'
 import { getLocalStorage } from './localStorage'
-import { UserContext } from './hooks/useUserContext'
+
+export const UserContext = React.createContext(null)
 
 function App() {
   const [user, setUser] = React.useState(getLocalStorage())
 
-  // Обертывание значения контекста в useMemo для предотвращения ненужного повторного создания
-  const userContextValue = React.useMemo(
-    () => ({ user, setUser }),
-    [user, setUser],
-  )
+  // Запоминаем объект значения контекста с помощью useMemo
+  const contextValue = useMemo(() => ({ user, setUser }), [user, setUser])
 
   return (
     <S.Wrapper>
       <GlobalStyles />
-      <UserContext.Provider value={userContextValue}>
+      {/* Указываем сохраненное значение контекста */}
+      <UserContext.Provider value={contextValue}>
         <AppRoutes />
       </UserContext.Provider>
     </S.Wrapper>

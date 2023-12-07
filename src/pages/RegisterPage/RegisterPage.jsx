@@ -1,10 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom'
-import React from 'react'
 import * as S from './styles'
-import { fetchRegister } from '../../API'
+import React from 'react'
+import { fetchRegister, getAccessToken } from '../../API'
 import { setLocalStorage } from '../../localStorage'
+import { UserContext } from '../../App'
 
-export function RegisterPage({ setUser }) {
+function RegisterPage() {
+  const { setUser } = React.useContext(UserContext)
   const [errorMessage, setErrorMessage] = React.useState(null)
   const [disabledButtonLogin, setDisabledButtonLogin] = React.useState(false)
   const emailRef = React.useRef(null)
@@ -25,13 +27,15 @@ export function RegisterPage({ setUser }) {
       }
 
       const userData = await fetchRegister(email, password)
+      const accessToken = await getAccessToken(email, password)
 
+      userData.accessToken = accessToken
       setUser(userData)
       setLocalStorage(userData)
       setErrorMessage(null)
       navigate('/', { replace: true })
     } catch (error) {
-      if (error.message) {
+      if (error) {
         setErrorMessage(error.message)
       }
     } finally {
@@ -44,18 +48,12 @@ export function RegisterPage({ setUser }) {
       setErrorMessage('Заполните почту')
       return
     }
-    // Проверка валидности email
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-    if (!emailPattern.test(emailRef.current.value)) {
-      setErrorMessage('Введите корректный email в формате valid@example.com')
-      return
-    }
     if (!passwordRef.current?.value) {
       setErrorMessage('Введите пароль')
       return
     }
     if (!confirmPassRef.current?.value) {
-      setErrorMessage('Повторите пароль')
+      setErrorMessage('Нужно повторить пароль')
       return
     }
     if (passwordRef.current?.value !== confirmPassRef.current?.value) {
@@ -71,7 +69,7 @@ export function RegisterPage({ setUser }) {
       <S.ModalForm>
         <Link to="/">
           <S.ModalLogo>
-            <S.ModalLogoImage src="/img/logo-black.png" alt="logo" />
+            <S.ModalLogoImage src="/img/logo_modal.png" alt="logo" />
           </S.ModalLogo>
         </Link>
         <>
@@ -103,4 +101,4 @@ export function RegisterPage({ setUser }) {
   )
 }
 
-export default RegisterPage
+export { RegisterPage }

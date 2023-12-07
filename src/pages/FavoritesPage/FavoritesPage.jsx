@@ -1,33 +1,25 @@
-import { GlobalStyles } from '../../GlobalStyles'
+import React from 'react'
+import TrackTitle from '../../components/Tracks/TrackTitle/TrackTitle'
 import * as S from './styles'
-import NavMenu from '../../components/NavMenu/NavMenu'
-import TrackSearch from '../../components/TrackSearch/TrackSearch'
-import SidebarPersonal from '../../components/SidebarPersonal/SidebarPersonal'
-import AudioPlayer from '../../components/AudioPlayer/AudioPlayer'
-import TrackTitle from '../../components/TrackTitle/TrackTitle'
-// import TracksAll from '../../components/TracksAll/TracksAll'
+import TrackSearch from '../../components/Tracks/TrackSearch/TrackSearch'
+import SidebarPersonal from '../../components/Bar/SidebarPersonal/SidebarPersonal'
+import TracksAllFavorites from '../../components/Tracks/TracksAllFavorites/TracksAllFavorites'
 
-export function FavoritesPage({ isLoading }) {
+export function FavoritesPage() {
   return (
-    <S.myPlaylist>
-      <GlobalStyles />
-      <S.Main>
-        <NavMenu />
-        <S.Container>
-          <S.MainCenterblock>
-            <TrackSearch />
-            <S.CenterblockH2>Мои треки</S.CenterblockH2>
-            <S.CenterblockContent>
-              <TrackTitle />
-              {/* <TracksAll isLoading={isLoading} /> */}
-            </S.CenterblockContent>
-          </S.MainCenterblock>
-        </S.Container>
+    <>
+      <S.MainCenterblock>
+        <TrackSearch />
+        <S.CenterblockH2>Избранное</S.CenterblockH2>
+        <S.CenterblockContent>
+          <TrackTitle />
+          <TracksAllFavorites />
+        </S.CenterblockContent>
+      </S.MainCenterblock>
+      <S.SidebarPersonalBlock>
         <SidebarPersonal />
-      </S.Main>
-      <AudioPlayer isLoading={isLoading} />
-      <S.Footer />
-    </S.myPlaylist>
+      </S.SidebarPersonalBlock>
+    </>
   )
 }
 

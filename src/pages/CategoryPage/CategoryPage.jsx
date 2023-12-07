@@ -1,15 +1,13 @@
-import { useParams } from 'react-router-dom'
-import { GlobalStyles } from '../../GlobalStyles'
-import NavMenu from '../../components/NavMenu/NavMenu'
-import TrackSearch from '../../components/TrackSearch/TrackSearch'
-import SidebarPersonal from '../../components/SidebarPersonal/SidebarPersonal'
-import AudioPlayer from '../../components/AudioPlayer/AudioPlayer'
-import TrackTitle from '../../components/TrackTitle/TrackTitle'
-// import TracksAll from '../../components/TracksAll/TracksAll'
-import * as S from './styles'
-import { CATEGORIES } from '../../constants'
+import React from 'react'
+import { useParams } from "react-router-dom";
+import { CATEGORIES } from "../../constants";
+import TrackTitle from "../../components/Tracks/TrackTitle/TrackTitle";
+import * as S from "../FavoritesPage/styles";
+import TrackSearch from "../../components/Tracks/TrackSearch/TrackSearch";
+import SidebarPersonal from "../../components/Bar/SidebarPersonal/SidebarPersonal";
+import TracksCategoryAll from "../../components/Tracks/TrackCategoryAll/TrackCategoryAll";
 
-export function CategoryPage({ isLoading }) {
+export function CategoryPage() {
   const params = useParams()
 
   const selectedCategory = CATEGORIES.find(
@@ -17,25 +15,19 @@ export function CategoryPage({ isLoading }) {
   )
 
   return (
-    <S.myPlaylist>
-      <GlobalStyles />
-      <S.Main>
-        <NavMenu />
-        <S.Container>
-          <S.MainCenterblock>
-            <TrackSearch />
-            <S.CenterblockH2>{selectedCategory.title}</S.CenterblockH2>
-            <S.CenterblockContent>
-              <TrackTitle />
-              {/* <TracksAll isLoading={isLoading} /> */}
-            </S.CenterblockContent>
-          </S.MainCenterblock>
-        </S.Container>
+    <>
+      <S.MainCenterblock>
+        <TrackSearch />
+        <S.CenterblockH2>{selectedCategory.title}</S.CenterblockH2>
+        <S.CenterblockContent>
+          <TrackTitle />
+          <TracksCategoryAll />
+        </S.CenterblockContent>
+      </S.MainCenterblock>
+      <S.SidebarPersonalBlock>
         <SidebarPersonal />
-      </S.Main>
-      <AudioPlayer isLoading={isLoading} />
-      <S.Footer />
-    </S.myPlaylist>
+      </S.SidebarPersonalBlock>
+    </>
   )
 }
 
