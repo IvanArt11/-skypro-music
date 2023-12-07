@@ -1,11 +1,17 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getTokenLocalStorage } from '../localStorage'
 
-const API_URL = 'https://skypro-music-api.skyeng.tech/catalog/'
+const API_URL =
+  process.env.REACT_APP_API_URL ||
+  'https://skypro-music-api.skyeng.tech/catalog/'
 const DATA_TAG = {
-  type: null,
+  type: 'Track',
   id: 'LIST',
 }
+
+const getHeaders = () => ({
+  Authorization: `Bearer ${getTokenLocalStorage()}`,
+})
 
 export const apiTracks = createApi({
   reducerPath: 'apiTracks',
@@ -21,9 +27,7 @@ export const apiTracks = createApi({
       query: () => ({
         method: 'GET',
         url: 'track/favorite/all/',
-        headers: {
-          Authorization: `Bearer ${getTokenLocalStorage()}`,
-        },
+        headers: getHeaders(),
       }),
       providesTags: [DATA_TAG],
     }),
@@ -31,9 +35,7 @@ export const apiTracks = createApi({
       query: (id) => ({
         method: 'POST',
         url: `track/${id}/favorite/`,
-        headers: {
-          Authorization: `Bearer ${getTokenLocalStorage()}`,
-        },
+        headers: getHeaders(),
       }),
       invalidatesTags: [DATA_TAG],
     }),
@@ -41,9 +43,7 @@ export const apiTracks = createApi({
       query: (id) => ({
         method: 'DELETE',
         url: `track/${id}/favorite/`,
-        headers: {
-          Authorization: `Bearer ${getTokenLocalStorage()}`,
-        },
+        headers: getHeaders(),
       }),
       invalidatesTags: [DATA_TAG],
     }),
@@ -56,8 +56,9 @@ export const apiTracks = createApi({
         url: `selection/${id}/`,
       }),
     }),
-    providesTags: [DATA_TAG],
   }),
+  providesTags: [DATA_TAG],
+  tagTypes: ['Track'],
 })
 
 export const {
