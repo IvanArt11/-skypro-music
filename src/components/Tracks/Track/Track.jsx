@@ -1,14 +1,16 @@
-import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import React from 'react'
 import * as S from './styles'
 import { timer } from '../../../utils/timer'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   setCurrentTrack,
   setIsPlaying,
   setVisiblePlayer,
 } from '../../../redux/slices/playerSlice'
-import { deleteFromFavoritesPlaylist } from '../../../redux/slices/favoritesSlice'
+import {
+  addToFavoritesPlaylist,
+  deleteFromFavoritesPlaylist,
+} from '../../../redux/slices/favoritesSlice'
+import React from 'react'
 import {
   useAddToFavoritesMutation,
   useDeleteFromFavoritesMutation,
@@ -21,9 +23,8 @@ import {
 } from '../../../localStorage'
 import { updateToken } from '../../../API'
 import { UserContext } from '../../../App'
-import { handleClickLike } from '../../../utils/trackUtils'
 
-function Track({ track }) {
+const Track = ({ track }) => {
   const dispatch = useDispatch()
   const currentTrack = useSelector((state) => state.audioplayer.track)
   const isPlaying = useSelector((state) => state.audioplayer.playing)
@@ -47,11 +48,13 @@ function Track({ track }) {
 
   const isLike = track.stared_user.some((users) => users.id === user.id)
 
-  const handleClickLikeTrack = (id) => {
-    handleClickLike(id, addToFavorites, dispatch, track)
+  const handleClickLike = (event, id) => {
+    event.stopPropagation()
+    addToFavorites(id)
+    dispatch(addToFavoritesPlaylist(track))
   }
-
-  const handleClickDislike = (id) => {
+  const handleClickDislike = (event, id) => {
+    event.stopPropagation()
     deleteFromFavorites(id)
     dispatch(deleteFromFavoritesPlaylist(track))
   }
@@ -86,52 +89,44 @@ function Track({ track }) {
   }, [dispatch, errorDislike, errorLike, setUser])
 
   return (
-    <S.PlaylistTrack>
-      <S.TrackTitle onClick={onChangeTrack}>
+    <S.PlaylistTrack onClick={onChangeTrack}>
+      <S.TrackTitle>
         <S.TrackTitleImage>
           {currentID === track.id ? (
-            <S.TrackTitleCurrent $isPlaying={isPlaying} />
+            <S.TrackTitleCurrent $isPlaying={isPlaying}></S.TrackTitleCurrent>
           ) : (
             <S.TrackTitleSvg alt={track.name}>
-              <use xlinkHref="img/icon/sprite.svg#icon-note" />
+              <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
             </S.TrackTitleSvg>
           )}
         </S.TrackTitleImage>
         <S.TrackTitleText>
-          <Link to="/">
-            <S.TrackTitleLink>
-              {track.name} <S.TrackTitleSpan />
-            </S.TrackTitleLink>
-          </Link>
+          <S.TrackTitleLink>{track.name}</S.TrackTitleLink>
         </S.TrackTitleText>
       </S.TrackTitle>
       <S.TrackAuthor>
-        <Link to="/">
-          <S.TrackAuthorLink>{track.author}</S.TrackAuthorLink>
-        </Link>
+        <S.TrackAuthorLink>{track.author}</S.TrackAuthorLink>
       </S.TrackAuthor>
       <S.TrackAlbum>
-        <Link to="/">
-          <S.TrackAlbumLink>{track.album}</S.TrackAlbumLink>
-        </Link>
+        <S.TrackAlbumLink>{track.album}</S.TrackAlbumLink>
       </S.TrackAlbum>
       <S.TrackTime>
         {isLike ? (
           <S.TrackLike
-            onClick={() => handleClickDislike(track.id)}
+            onClick={(event) => handleClickDislike(event, track.id)}
             className="_btn-icon-like"
           >
-            <S.TrackLikeSvg alt="time">
-              <use xlinkHref="img/icon/sprite.svg#icon-like" />
+            <S.TrackLikeSvg alt="like">
+              <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
             </S.TrackLikeSvg>
           </S.TrackLike>
         ) : (
           <S.TrackLike
-            onClick={() => handleClickLikeTrack(track.id)}
-            className={isLike ? '_btn-icon-like' : '_btn-icon'}
+            onClick={(event) => handleClickLike(event, track.id)}
+            className="_btn-icon"
           >
-            <S.TrackLikeSvg alt="time">
-              <use xlinkHref="img/icon/sprite.svg#icon-like" />
+            <S.TrackLikeSvg alt="like">
+              <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
             </S.TrackLikeSvg>
           </S.TrackLike>
         )}

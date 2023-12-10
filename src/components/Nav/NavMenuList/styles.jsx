@@ -13,6 +13,8 @@ export const MenuList = styled.ul`
 export const MenuItem = styled.li`
   padding: 5px 0;
   margin-bottom: 16px;
+  display: flex;
+  position: relative;
 `
 
 export const MenuLink = styled.div`
@@ -37,4 +39,19 @@ export const StyledNavLink = styled(NavLink)`
     border-color: #ad61ff;
     color: #ad61ff;
   }
+`
+
+export const FavCount = styled.div`
+  font-size: 16px;
+  position: absolute;
+  left: 110px;
+  top: 5px;
+  width: 24px;
+  height: 24px;
+  background: -webkit-linear-gradient(-45deg, #ad61ff, #d9b6ff);
+  border-radius: 50%;
+  align-items: center;
+  color: white;
+  display: flex;
+  justify-content: center;
 `

@@ -1,6 +1,4 @@
 import React from 'react'
-
-import { useSelector, useDispatch } from 'react-redux'
 import AudioPlayerControls from '../AudioPlayerControls/AudioPlayerControls'
 import AudioPlayerTrack from '../AudioPlayerTrack/AudioPlayerTrack'
 import AudioPlayerVolume from '../AudioPlayerVolume/AudioPlayerVolume'
@@ -11,6 +9,7 @@ import {
   setCurrentTrack,
   setIsShuffle,
 } from '../../../redux/slices/playerSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 const AudioPlayer = () => {
   const [currentTime, setCurrentTime] = React.useState(0)
@@ -24,7 +23,7 @@ const AudioPlayer = () => {
   const isPlaying = useSelector((state) => state.audioplayer.playing)
   const currentPlaylist = useSelector((state) => state.audioplayer.playlist)
   const isShuffle = useSelector((state) => state.audioplayer.shuffle)
-  const indexCurrentTrack = currentPlaylist.indexOf(currentTrack)
+  const indexCurrentTrack = currentPlaylist?.indexOf(currentTrack)
 
   React.useEffect(() => {
     audioRef.current.volume = volume / 100
@@ -32,9 +31,9 @@ const AudioPlayer = () => {
 
   React.useEffect(() => {
     if (isPlaying) {
-      audioRef.current.play()
+      audioRef.current && audioRef.current.play()
     } else {
-      audioRef.current.pause()
+      audioRef.current && audioRef.current.pause()
     }
   }, [isPlaying, currentTrack])
 
@@ -109,9 +108,11 @@ const AudioPlayer = () => {
   }
 
   const trackEnding = () => {
-    const nextTrack = currentPlaylist[indexCurrentTrack + 1]
-    dispatch(setCurrentTrack(nextTrack))
-    dispatch(setIsPlaying(true))
+    if (isRepeat === false) {
+      const nextTrack = currentPlaylist[indexCurrentTrack + 1]
+      dispatch(setCurrentTrack(nextTrack))
+      dispatch(setIsPlaying(true))
+    }
   }
 
   return (
@@ -129,7 +130,9 @@ const AudioPlayer = () => {
       ></audio>
       <S.BarContent>
         <S.Timer>
-          <span>{timer(currentTime)}</span>/<span>{timer(duration)}</span>
+          <span>
+            {timer(currentTime)} / {timer(duration)}
+          </span>
         </S.Timer>
         <S.BarPlayerProgress
           type="range"

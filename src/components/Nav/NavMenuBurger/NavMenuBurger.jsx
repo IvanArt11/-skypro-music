@@ -5,23 +5,23 @@ import * as S from './styles'
 function NavMenuBurger() {
   const [openMenu, setOpenMenu] = useState(false)
 
+  function switchBurgerButton() {
+    setOpenMenu(!openMenu)
+  }
+
   return (
     <>
-      <S.NavBurger
-        onClick={() => setOpenMenu(!openMenu)}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter' || event.key === ' ') {
-            setOpenMenu(!openMenu)
-          }
-        }}
-        role="button"
-        tabIndex={0}
-        aria-label="Toggle Menu"
-      >
-        <S.BurgerLine />
-        <S.BurgerLine />
-        <S.BurgerLine />
-      </S.NavBurger>
+      {openMenu ? (
+        <S.CloseSvg onClick={switchBurgerButton}>
+          <use xlinkHref="img/icon/sprite.svg#icon-close"></use>
+        </S.CloseSvg>
+      ) : (
+        <S.NavBurger onClick={switchBurgerButton}>
+          <S.BurgerLine></S.BurgerLine>
+          <S.BurgerLine></S.BurgerLine>
+          <S.BurgerLine></S.BurgerLine>
+        </S.NavBurger>
+      )}
       {openMenu && <NavMenuList />}
     </>
   )

@@ -11,6 +11,7 @@ export function LoginPage() {
   const passwordRef = React.useRef(null)
   const [errorMessage, setErrorMessage] = React.useState(null)
   const [disabledButtonLogin, setDisabledButtonLogin] = React.useState(false)
+  const [showPassword, setShowPassword] = React.useState(false)
 
   const navigate = useNavigate()
 
@@ -42,17 +43,36 @@ export function LoginPage() {
     }
   }
 
+  const isEmailValid = (email) => {
+    // Регулярное выражение для проверки валидности email
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+    return emailRegex.test(email)
+  }
+
   const handleLogin = () => {
-    if (!emailRef.current?.value) {
+    const email = emailRef.current?.value
+    const password = passwordRef.current?.value
+
+    if (!email) {
       setErrorMessage('Заполните почту')
       return
     }
-    if (!passwordRef.current?.value) {
+
+    if (!isEmailValid(email)) {
+      setErrorMessage('Введите корректный email в формате valid@example.com')
+      return
+    }
+
+    if (!password) {
       setErrorMessage('Введите пароль')
       return
     }
 
     validateAndLogin()
+  }
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
   }
 
   return (
@@ -68,9 +88,12 @@ export function LoginPage() {
             <S.ModalInput ref={emailRef} type="text" placeholder="Почта" />
             <S.ModalInput
               ref={passwordRef}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               placeholder="Пароль"
             />
+            <S.PasswordVisibilityToggle onClick={togglePasswordVisibility}>
+              {showPassword ? '👁️' : '👁️'}
+            </S.PasswordVisibilityToggle>
           </S.Inputs>
           {errorMessage && <S.Error>{errorMessage}</S.Error>}
           <S.Buttons>

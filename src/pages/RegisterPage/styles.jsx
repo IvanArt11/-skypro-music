@@ -116,3 +116,11 @@ export const Error = styled.div`
   margin-top: 20px;
   text-align: left;
 `
+export const PasswordVisibilityToggle = styled.div`
+  position: absolute;
+  cursor: pointer;
+  font-size: 1.2rem;
+  right: 45px;
+  top: 40%;
+  transform: translateY(-50%);
+`
