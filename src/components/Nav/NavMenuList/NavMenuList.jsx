@@ -2,6 +2,7 @@ import React from 'react'
 import * as S from './styles'
 import { removeLocalStorage } from '../../../localStorage'
 import { UserContext } from '../../../App'
+import { useGetFavoritesPlaylistQuery } from '../../../services/tracks'
 
 function NavMenuList() {
   const { setUser } = React.useContext(UserContext)
@@ -11,6 +12,8 @@ function NavMenuList() {
     removeLocalStorage()
   }
 
+  const { data } = useGetFavoritesPlaylistQuery()
+
   return (
     <S.NavMenu>
       <S.MenuList>
@@ -19,7 +22,10 @@ function NavMenuList() {
           {/* <S.MenuLink href="http://">Главное</S.MenuLink> */}
         </S.MenuItem>
         <S.MenuItem>
-          <S.StyledNavLink to="/favorites">Мой плейлист</S.StyledNavLink>
+          <S.StyledNavLink to="/favorites">
+            Мой плейлист
+            {data && <S.FavCount>{data.length}</S.FavCount>}
+          </S.StyledNavLink>
           {/* <S.MenuLink href="http://">Мой плейлист</S.MenuLink> */}
         </S.MenuItem>
         <S.MenuItem>

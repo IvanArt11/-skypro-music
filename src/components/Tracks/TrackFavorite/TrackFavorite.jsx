@@ -1,14 +1,13 @@
-import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import React from 'react'
 import * as S from './styles'
 import { timer } from '../../../utils/timer'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   setCurrentTrack,
   setIsPlaying,
   setVisiblePlayer,
 } from '../../../redux/slices/playerSlice'
 import { deleteFromFavoritesPlaylist } from '../../../redux/slices/favoritesSlice'
+import React from 'react'
 import { useDeleteFromFavoritesMutation } from '../../../services/tracks'
 import {
   getLocalStorage,
@@ -19,7 +18,7 @@ import {
 import { updateToken } from '../../../API'
 import { UserContext } from '../../../App'
 
-function TrackFavorite({ favTrack }) {
+const TrackFavorite = ({ favTrack }) => {
   const dispatch = useDispatch()
   const currentTrack = useSelector((state) => state.audioplayer.track)
   const isPlaying = useSelector((state) => state.audioplayer.playing)
@@ -40,7 +39,8 @@ function TrackFavorite({ favTrack }) {
   const [deleteFromFavorites, { error: errorDislike }] =
     useDeleteFromFavoritesMutation()
 
-  const handleClickDislike = (id) => {
+  const handleClickDislike = (event, id) => {
+    event.stopPropagation()
     deleteFromFavorites(id)
     dispatch(deleteFromFavoritesPlaylist(favTrack))
   }
@@ -78,39 +78,30 @@ function TrackFavorite({ favTrack }) {
       <S.TrackTitle onClick={onChangeTrack}>
         <S.TrackTitleImage>
           {currentID === favTrack.id ? (
-            <S.TrackTitleCurrent $isPlaying={isPlaying} />
+            <S.TrackTitleCurrent $isPlaying={isPlaying}></S.TrackTitleCurrent>
           ) : (
             <S.TrackTitleSvg alt={favTrack.name}>
-              <use xlinkHref="img/icon/sprite.svg#icon-note" />
+              <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
             </S.TrackTitleSvg>
           )}
         </S.TrackTitleImage>
         <S.TrackTitleText>
-          <Link to="/">
-            <S.TrackTitleLink>
-              {favTrack.name} <S.TrackTitleSpan />
-              <S.TrackTitleSpan>{favTrack.subname}</S.TrackTitleSpan>
-            </S.TrackTitleLink>
-          </Link>
+          <S.TrackTitleLink>{favTrack.name}</S.TrackTitleLink>
         </S.TrackTitleText>
       </S.TrackTitle>
       <S.TrackAuthor>
-        <Link to="/">
-          <S.TrackAuthorLink>{favTrack.author}</S.TrackAuthorLink>
-        </Link>
+        <S.TrackAuthorLink>{favTrack.author}</S.TrackAuthorLink>
       </S.TrackAuthor>
       <S.TrackAlbum>
-        <Link to="/">
-          <S.TrackAlbumLink>{favTrack.album}</S.TrackAlbumLink>
-        </Link>
+        <S.TrackAlbumLink>{favTrack.album}</S.TrackAlbumLink>
       </S.TrackAlbum>
       <S.TrackTime>
         <S.TrackLike
-          onClick={() => handleClickDislike(favTrack.id)}
+          onClick={(event) => handleClickDislike(event, favTrack.id)}
           className="_btn-icon-like"
         >
           <S.TrackLikeSvg alt="time">
-            <use xlinkHref="img/icon/sprite.svg#icon-like" />
+            <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
           </S.TrackLikeSvg>
         </S.TrackLike>
         <S.TrackTimeText>{timer(favTrack.duration_in_seconds)}</S.TrackTimeText>
